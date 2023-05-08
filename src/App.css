@@ -1,38 +1,74 @@
-.App {
-  text-align: center;
+body {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 20px;
+  margin: 0 70px;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+  grid-area: header;
+  display: grid;
+  height: 120px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 20px;
+  place-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header img {
+  display: block;
+  grid-column-start: 2;
+  width: 200px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+header nav {
+  grid-column-end: 11;
+}
+
+.menu ul {
+  /*display: flex;  maakt de lijst flexibel */
+  flex-wrap: wrap;
+  justify-content: flex-end;  /*lijnt de items rechts uit */
+  list-style-type: none; /* verwijdert de standaard bullets */
+  margin: 0; /* verwijdert de standaard marges */
+  padding: 0; /* verwijdert de standaard padding */
+}
+
+.menu li {
+  margin: 30px; /* voegt ruimte toe tussen de items */
+  display: inline;
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  text-transform: uppercase;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.menu a {
+  text-decoration: none; /* verwijdert de standaard onderstreping */
+  color: #495E57;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main {
+  grid-area: main;
+  margin: 0 70px;
 }
+
+.footer {
+  grid-area: footer;
+}
+
+footer .logo{
+  height: 279px;
+}
+
+.socialicon {
+  width: 30px;
+  padding-right: 15px;
+  color: #495E57;
+}
+
