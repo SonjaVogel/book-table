@@ -1,20 +1,31 @@
 body {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-gap: 20px;
+  column-gap: 20px;
   margin: 0 70px;
   grid-template-areas:
-    "header"
+    "header header header header header header header header header header header header"
     "main"
     "footer";
+}
+
+.section-title {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 23px;
+  text-transform: uppercase;
+  color: #495E57;
 }
 
 header {
   grid-area: header;
   display: grid;
+  width: calc(100vw - 140px);
   height: 120px;
   grid-template-columns: repeat(12, 1fr);
-  grid-gap: 20px;
+  column-gap: 20px;
   place-items: center;
 }
 
@@ -25,11 +36,11 @@ header img {
 }
 
 header nav {
-  grid-column-end: 11;
+  grid-column-end: 12;
+  margin-right: -20px;
 }
 
-.menu ul {
-  /*display: flex;  maakt de lijst flexibel */
+header nav ul {
   flex-wrap: wrap;
   justify-content: flex-end;  /*lijnt de items rechts uit */
   list-style-type: none; /* verwijdert de standaard bullets */
@@ -37,7 +48,7 @@ header nav {
   padding: 0; /* verwijdert de standaard padding */
 }
 
-.menu li {
+header nav li {
   margin: 30px; /* voegt ruimte toe tussen de items */
   display: inline;
   font-family: 'Karla';
@@ -48,7 +59,7 @@ header nav {
   align-items: center;
 }
 
-.menu a {
+header nav a {
   text-decoration: none; /* verwijdert de standaard onderstreping */
   color: #495E57;
 }
@@ -63,7 +74,7 @@ header nav {
 }
 
 footer .logo{
-  height: 279px;
+  height: 150px;
 }
 
 .socialicon {
@@ -72,3 +83,11 @@ footer .logo{
   color: #495E57;
 }
 
+@media screen and (max-width: 1100px) {
+  body {
+    margin: 0 16px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 16px;
+  }
+}

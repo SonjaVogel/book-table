@@ -24,12 +24,12 @@ body {
     width: 200px;
   }
   
-  nav {
+  header nav {
     grid-column-end: 11;
   }
   
   .menu ul {
-    display: flex; /* maakt de lijst flexibel */
+    /*display: flex;  maakt de lijst flexibel */
     flex-wrap: wrap;
     justify-content: flex-end;  /*lijnt de items rechts uit */
     list-style-type: none; /* verwijdert de standaard bullets */

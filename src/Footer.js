@@ -6,8 +6,10 @@ function Footer() {
     return(
         <footer>
             <img src="Footer logo.png" alt="Logo" height="279px"/>
-            <Nav />
             <address>
+                    <h3 className="section-title">
+                        Contact
+                    </h3>
                     +12 345 678 9900<br/>
                     info@littlelemon.com<br/>
                     5301 S Hyde Park Blvd, Chicago, IL 60615
