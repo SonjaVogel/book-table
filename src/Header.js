@@ -1,17 +1,3 @@
-/* import Nav from './Nav'
-
-function Header() {
-    return (
-        <header className="header">
-          <img src="Little Lemon Logo1.png" alt="Logo" width="200px"/>
-          <Nav />
-        </header>
-    )
-}
-
-export default Header; */
-
-// Header.js
 import './Header.css';
 import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
