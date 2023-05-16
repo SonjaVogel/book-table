@@ -15,13 +15,24 @@ html, body {
 
 body {
   display: grid;
-  grid-template-rows: repeat(3, auto);
-  column-gap: 20px;
-  /* margin: 0 70px; */
   grid-template-areas:
     "header"
     "main"
     "footer";
+}
+
+main {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-areas:
+    "hero"
+    "specials";
+}
+
+main img {
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 16px;
 }
 
 h1 {
@@ -31,6 +42,7 @@ h1 {
   font-size: 64px;
   line-height: 77px;
   color: var(--primary-yellow);
+  margin: 0;
 }
 
 h2 {
@@ -40,6 +52,7 @@ h2 {
   font-size: 40px;
   line-height: 48px;
   color: var(--primary-green);
+  margin: 0;
 }
 
 .section-title {
@@ -85,7 +98,7 @@ p {
   line-height: 21px;
 }
 
-.price-highlight-text {
+.price {
   font-family: 'Karla';
   font-style: normal;
   font-weight: 500;
@@ -94,20 +107,22 @@ p {
   color: var(--secondary-dpeach);
 }
 
-main {
-  grid-area: main;
-  display: grid;
-    /* grid-template-columns: repeat(12, 1fr); */
-    padding: 50px;
-    column-gap: 20px;
-    place-items: center;
-    justify-items: left;
-  /* margin: 0 70px; */
+button {
+  background: #F4CE14;
+  height: 60px;
+  width: 200px;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
 }
 
-@media screen and (max-width: 1100px) {
+/* @media screen and (max-width: 1100px) {
   main, footer {
     padding: 16px;
   }
-} 
+}  */
 

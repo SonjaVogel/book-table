@@ -1,0 +1,64 @@
+.specials {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(20px,1fr));
+    grid-template-areas:
+        ". . specials-header specials-header specials-header specials-header specials-header specials-header specials-header specials-header . ."
+        ". . specials-cards specials-cards specials-cards specials-cards specials-cards specials-cards specials-cards specials-cards . .";
+    padding: 110px 0px 50px 0px;
+    column-gap: 20px;
+    align-items: center;
+}
+
+.specials-header {
+    grid-area: specials-header;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.specials-container {
+    grid-area: specials-cards;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-self: center;
+}
+
+.card {
+    margin: 12px;
+    gap: 0;
+    justify-content: space-between;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 24px;
+}
+
+.card-body {
+    padding: 24px;
+    margin: 0;
+    gap: 10px;
+    background: var(--highlight-lgrey);
+}
+
+.card:first-child {
+    margin-left: 0;
+}
+
+.card:last-child {
+    margin-right: 0;
+}
+
+.specials p {
+    color: #6E6F6E;
+}
+
+.specials a {
+    color: black;
+    text-decoration: none;
+}
+

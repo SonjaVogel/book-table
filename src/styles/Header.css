@@ -1,0 +1,114 @@
+.header-container {
+  display: grid;
+  width: calc(100vw - 140px);
+  max-width: 100%;
+  height: 120px;
+  margin: 0 70px;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 20px;
+  place-items: center;
+  grid-template-areas: "menu-icon logo logo logo";
+}
+
+.logo {
+  grid-area: logo;
+  grid-column-start: 2;
+  width: 200px;
+}
+
+.menu-icon {
+  grid-area: menu-icon;
+  display: none;
+}
+
+.nav-elements {
+  grid-column-end: 12;
+  margin-right: -20px;
+  max-width: 600px;
+}
+
+.nav-elements ul {
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;  /*lijnt de items rechts uit */
+  list-style-type: none; /* verwijdert de standaard bullets */
+  margin: 0; /* verwijdert de standaard marges */
+  padding: 0; /* verwijdert de standaard padding */
+}
+
+.nav-elements li {
+  margin: clamp(10px, 1.5vw, 30px); /* voegt ruimte toe tussen de items */
+  display: block;
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  text-transform: uppercase;
+  align-items: center;
+}
+
+.nav-elements a {
+  text-decoration: none; /* verwijdert de standaard onderstreping */
+  color: #495E57;
+}
+
+@media screen and (max-width: 1100px) {
+
+  .header-container {
+      /* display: block; */
+      grid-template-columns: auto 1fr auto;;
+      column-gap: 16px;
+      height: 70px;
+      width: fit-content;
+      place-items: center;
+      vertical-align: middle;
+      align-items: center;
+      margin-top: 16px;
+  }
+
+  .menu-icon {
+    display: block;
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+    font-size: 40px;
+    color:#495E57;
+    grid-column-start: 1;
+  }
+
+  .logo {
+      display: block;
+      position: absolute;
+      left: 20px;
+      width: 200px;
+      grid-column-start: 3;
+    }
+
+  .nav-elements {
+    grid-column-start: 1;
+    top: 60px;
+    background-color: #fef7e5;
+    width: 0px;
+    height: calc(100vh - 60px);
+    transition: all 0.3s ease-in;
+    overflow: hidden;
+  }
+
+  .nav-elements.active {
+    width: 270px;
+  }
+
+  .nav-elements ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-elements ul li {
+    margin-right: unset;
+    margin-top: 22px;
+  }
+}
