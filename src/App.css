@@ -1,4 +1,4 @@
-html, body {
+html, body, main {
   margin: 0;
   padding: 0;
 }
@@ -10,24 +10,13 @@ html, body {
   --secondary-lpeach: #FBDABB;
   --highlight-lgrey: #EDEFEE;
   --highlight-dgrey: #333333;
-  max-width: 100%;
 }
 
-body {
+.grid {
   display: grid;
-  grid-template-areas:
-    "header"
-    "main"
-    "footer";
-}
-
-main {
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-areas:
-    "hero"
-    "specials";
+  grid-template-columns: 1fr repeat(2, minmax(auto,410px)) 1fr;
+  gap: 20px;
+  padding: 50px 0 50px 0;
 }
 
 main img {
@@ -52,7 +41,7 @@ h2 {
   font-size: 40px;
   line-height: 48px;
   color: var(--primary-green);
-  margin: 0;
+  margin: 0 0 0.5em 0;
 }
 
 .section-title {

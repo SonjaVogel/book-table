@@ -25,10 +25,10 @@ const cards = [
         link: '#'
     }
 ];
-
+ 
 function Specials() {
     return(
-        <section className="specials">
+        <section className="specials grid">
             <div className="specials-header">
                 <h2>
                     <span className="section-title">

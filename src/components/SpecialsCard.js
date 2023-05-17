@@ -4,14 +4,14 @@ import { faBicycle } from '@fortawesome/free-solid-svg-icons';
 
 function SpecialsCard(props) {
     return(
-        <Card style={{width: "264.67px"}} >
+        <Card style={{width: "264px"}} >
             <Card.Img
                 variant="top"
                 src={props.img}
                 style={{
                     borderRadius: "16px 16px 0px 0px",
                     height: "185px",
-                    width: "264.67px",
+                    width: "264px",
                     filter: "none",
                     marginBottom: 0,
                 }}/>

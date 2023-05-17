@@ -12,7 +12,7 @@ const Header = () => {
     }
 
     return (
-      <nav className="navbar">
+      <nav className="navbar grid">
         <div className="header-container">
             <div className="logo">
                 <img src="Little Lemon Logo1.png" alt="Little Lemon Logo" width="200px"/>

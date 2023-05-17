@@ -1,30 +1,18 @@
 .hero {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    padding: 50px 90px;
-    column-gap: 20px;
-    align-items: start;
-    justify-content: center;
     background-color: var(--primary-green);
     height: 300px;
 }
 
-.hero-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .hero-item:first-child {
-    grid-column-start: 3;
-    grid-column-end: 9;
+    grid-column: 2/3;
     min-width: 350px;
-    max-width: 424px;
+    max-width: 422px;
     margin-top: -5px;
 }
 
 .hero-item:nth-child(2) {
-    grid-column-start: 10;
+    grid-column: 3/4;
+    justify-self: end;
     margin-top: 10px;
 }
 
@@ -43,6 +31,7 @@
   .hero p {
     color: white;
     margin: 1.75rem 0 1.75rem 0;
+    max-width: 420px;
   }
 
   @media screen and (max-width: 1056px) {
@@ -100,7 +89,7 @@
         border-radius: 16px 0px 0px 16px;
         width: 135px;
         height: 162px;
-        right: -10px;
+        right: 0px;
         top: 230px;
     }
 

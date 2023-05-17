@@ -5,12 +5,12 @@ import About from './About';
 
 function Homepage() {
     return(
-        <main>
+        <>
             <Hero />
             <Specials />
             <Reviews />
             <About />
-        </main>
+        </>
     )
 }
 
