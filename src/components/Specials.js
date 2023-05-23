@@ -35,11 +35,12 @@ function Specials() {
                         Weekly specials!
                     </span>
                 </h2>
-                <button>Online Menu</button>
+                <button className="desktop">Online Menu</button>
             </div>
             <Container className="specials-container">
                 <SpecialsCardContainer cards={cards} />
             </Container>
+            <button className="mobile">Online Menu</button>
         </section>
     )
 }

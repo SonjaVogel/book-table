@@ -16,7 +16,7 @@ html, body, main {
   display: grid;
   grid-template-columns: 1fr repeat(2, minmax(auto,410px)) 1fr;
   gap: 20px;
-  padding: 50px 0 50px 0;
+  padding: 100px 0 100px 0;
 }
 
 main img {

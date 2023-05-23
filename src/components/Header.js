@@ -15,10 +15,10 @@ const Header = () => {
       <nav className="navbar grid">
         <div className="header-container">
             <div className="logo">
-                <img src="Little Lemon Logo1.png" alt="Little Lemon Logo" width="200px"/>
+                <img src="Little Lemon Logo1.png" alt="Little Lemon Logo"/>
             </div>
             <div className="menu-icon" onClick={handleShowNavbar}>
-                <FontAwesomeIcon icon={faBars} />
+                <FontAwesomeIcon icon={faBars} size="3x" />
             </div>
             <div className={`nav-elements  ${showNavbar && 'active'}`}>
             <ul>

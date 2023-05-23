@@ -1,5 +1,5 @@
 .specials {
-    padding: 100px 0 50px;
+    padding: 150px 0 100px;
 }
 
 .specials-header {
@@ -14,8 +14,14 @@
     overflow-x: auto;
 }
 
+.mobile {
+    display: none;
+}
+
 .card {
-    margin: 12px;
+    padding: 12px;
+    width: 264px;
+    margin: 0;
     gap: 0;
     justify-content: space-between;
 }
@@ -35,11 +41,11 @@
 }
 
 .card:first-child {
-    margin-left: 0;
+    padding-left: 0;
 }
 
 .card:last-child {
-    margin-right: 0;
+    padding-right: 0;
 }
 
 .specials p {
@@ -51,3 +57,26 @@
     text-decoration: none;
 }
 
+@media screen and (max-width: 700px) {
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+        grid-column-start: 2;
+    }
+
+    .specials {
+        grid-gap: 16px;
+    }
+
+    .card {
+        padding: 8px;
+    }
+
+    .card:last-child {
+        padding-right: 0;
+    }
+
+}

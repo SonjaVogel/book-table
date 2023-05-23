@@ -1,6 +1,7 @@
 .hero {
     background-color: var(--primary-green);
     height: 300px;
+    padding: 50px 0 50px 0;
 }
 
 .hero-item:first-child {
