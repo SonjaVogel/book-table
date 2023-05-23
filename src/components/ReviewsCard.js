@@ -10,8 +10,9 @@ function ReviewsCard(props) {
                 <Rating
                     initialRating={props.rating}
                     readonly
-                    fullSymbol={<FontAwesomeIcon icon={faStar} color="#F4CE14" />}
-                    emptySymbol={<FontAwesomeIcon icon={faStar} color="#EDEFEE" />}
+                    fullSymbol={<FontAwesomeIcon icon={faStar} color="#F4CE14" size="lg" />}
+                    emptySymbol={<FontAwesomeIcon icon={faStar} color="#EDEFEE" size="lg" />}
+                    padding={20}
                 />
                 <div style={{ display: "flex", alignItems: "center" }}>
                     <Card.Img
