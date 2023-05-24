@@ -13,7 +13,7 @@ function About() {
                 <p>
                     To craft the menu, Mario relies on family recipes and his experience as a chef in Italy. Adrian does all the marketing for the restaurant and led the effort to expand the menu beyond classic Italian to incorporate additional cuisines from the Mediterranean region.
                 </p>
-                </div>
+            </div>
             <div className="about-item">
                 <img src="Mario+Adrian B.jpg"/>
                 <img src="Mario+Adrian A.jpg"/>
