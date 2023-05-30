@@ -58,6 +58,10 @@
 }
 
 @media screen and (max-width: 700px) {
+    .specials {
+        padding: 75px 0 75px 0;
+    }
+
     .desktop {
         display: none;
     }
@@ -69,6 +73,7 @@
 
     .specials {
         grid-gap: 16px;
+        padding-top: 50px;
     }
 
     .card {

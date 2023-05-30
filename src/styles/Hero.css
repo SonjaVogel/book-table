@@ -35,6 +35,11 @@
     max-width: 420px;
   }
 
+  .hero button:hover {
+    background: var(--secondary-lpeach);
+    color: black;
+  }
+
   @media screen and (max-width: 1056px) {
 
     .hero {
@@ -54,7 +59,7 @@
         margin-right: 0;
         margin-left: 0;
         height: fit-content;
-        padding: 50px;
+        padding: 50px 20px;
     }
 
     .hero img {

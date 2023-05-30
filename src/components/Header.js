@@ -1,8 +1,8 @@
 import '../styles/Header.css';
-import { NavLink } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react'
+import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
 
 const Header = () => {
     const [showNavbar, setShowNavbar] = useState(false)
@@ -15,22 +15,22 @@ const Header = () => {
       <nav className="navbar grid">
         <div className="header-container">
             <div className="logo">
+              <NavLink to="/">
                 <img src="Little Lemon Logo1.png" alt="Little Lemon Logo"/>
+              </NavLink>
             </div>
             <div className="menu-icon" onClick={handleShowNavbar}>
                 <FontAwesomeIcon icon={faBars} size="3x" />
             </div>
             <div className={`nav-elements  ${showNavbar && 'active'}`}>
             <ul>
-                <li><NavLink to="/about">About</NavLink></li>
-                <li><NavLink to="/menu">Menu</NavLink></li>
-                <li><NavLink to="/reserve-table">Reservations</NavLink></li>
-                <li><NavLink to="/order-online">Order&nbsp;Online</NavLink></li>
-                <li><NavLink to="/login">Login</NavLink></li>
+                <li><NavLink to="/" onClick={handleShowNavbar}>Home</NavLink></li>
+                <li><NavLink to="/reserve-table" onClick={handleShowNavbar}>Reserve a table</NavLink></li>
             </ul>
             </div>
         </div>
       </nav>
+
     )
   }
 

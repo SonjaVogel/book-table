@@ -1,5 +1,6 @@
 import '../App.css';
 import '../styles/Hero.css';
+import { NavLink } from 'react-router-dom';
 
 function Hero() {
     return(
@@ -11,7 +12,9 @@ function Hero() {
                     <p className="CTA-lead-text">
                         We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.
                     </p>
-                    <button>Reserve a Table</button>
+                    <NavLink to="/reserve-table">
+                        <button>Reserve a Table</button>
+                    </NavLink>
                 </div>
             </div>
             <div className="hero-item">
