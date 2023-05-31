@@ -1,51 +1,185 @@
-// Importeer React, Formik, Yup en andere benodigde modules
+/* import React from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { FormControl, FormLabel, Select, FormErrorMessage, Textarea } from "@chakra-ui/react";
+import { InputControl } from "formik-chakra-ui";
+import { ChakraProvider } from "@chakra-ui/react"
+import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/menu";
+ import { Button } from "@chakra-ui/button";
+ import { ChevronDownIcon } from "@chakra-ui/icons";
+
+const validationSchema = Yup.object().shape({
+  people: Yup.number()
+    .oneOf([1, 2, 3, 4, 5, 6, 7, 8], "Invalid number of people")
+    .required("required"),
+  date: Yup.date()
+    .min(new Date(), "Date should be in the future")
+    .required("required"),
+  time: Yup.string()
+    .oneOf(["18:00", "18:30", "19:00", "19:30", "20:00", "20:30"], "Invalid time")
+    .required("required"),
+  occasion: Yup.string()
+    .oneOf(["Birthday", "Engagement", "Anniversary"], "Invalid occasion"),
+  seatingArea: Yup.string()
+    .oneOf(["Inside", "Outside"], "Invalid seating area")
+    .required("required"),
+  notes: Yup.string().max(100, "Maximum of 100 characters"),
+});
+
+const initialValues = {
+  people: "",
+  date: "",
+  time: "",
+  occasion: "",
+  seatingArea: "",
+  notes: "",
+};
+
+const onSubmit = (values) => {
+  alert(JSON.stringify(values, null, 2));
+};
+
+function BookingForm() {
+  return (
+    <div className="container">
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+      >
+        {({ errors, touched }) => (
+          <Form>
+            <FormControl id="people" isInvalid={errors.people && touched.people}>
+              <FormLabel htmlFor="people">Number of People</FormLabel>
+              <Select
+                name="people"
+                id="people"
+                placeholder="Number of people"
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+              </Select>
+              <FormErrorMessage>{errors.people}</FormErrorMessage>
+            </FormControl>
+            <FormControl id="date" isInvalid={errors.date && touched.date}>
+              <FormLabel htmlFor="date">Date</FormLabel>
+              <InputControl
+                type="date"
+                name="date"
+                id="date"
+              />
+              <FormErrorMessage>{errors.date}</FormErrorMessage>
+            </FormControl>
+            <FormControl id="time" isInvalid={errors.time && touched.time}>
+              <FormLabel htmlFor="time">Time</FormLabel>
+              <Select
+                name="time"
+                id="time"
+                placeholder="Time"
+              >
+                <option value="18:00">18:00</option>
+                <option value="18:30">18:30</option>
+                <option value="19:00">19:00</option>
+                <option value="19:30">19:30</option>
+                <option value="20:00">20:00</option>
+                <option value="20:30">20:30</option>
+              </Select>
+              <FormErrorMessage>{errors.time}</FormErrorMessage>
+            </FormControl>
+            <FormControl id="occasion" isInvalid={errors.occasion && touched.occasion}>
+              <FormLabel htmlFor="occasion">Occasion</FormLabel>
+              <Menu closeOnSelect={false}>
+                <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+                  Occasion
+                </MenuButton>
+                <MenuList minWidth="240px">
+                  <Field name="occasion">
+                    {({ field }) => (
+                      <>
+                        <MenuItem
+                          type="checkbox"
+                          {...field}
+                          value="Birthday"
+                          isChecked={field.value.includes("Birthday")}
+                        >
+                          Birthday
+                        </MenuItem>
+                        <MenuItem
+                          type="checkbox"
+                          {...field}
+                          value="Engagement"
+                          isChecked={field.value.includes("Engagement")}
+                        >
+                          Engagement
+                        </MenuItem>
+                        <MenuItem
+                          type="checkbox"
+                          {...field}
+                          value="Anniversary"
+                          isChecked={field.value.includes("Anniversary")}
+                        >
+                          Anniversary
+                        </MenuItem>
+                      </>
+                    )}
+                  </Field>
+                </MenuList>
+              </Menu>
+              <FormErrorMessage>{errors.occasion}</FormErrorMessage>
+            </FormControl>
+          </Form>
+        )}
+      </Formik>
+    </div>
+  )}
+
+export default BookingForm; */
+
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-// Definieer een validatieschema voor Yup
+
 const validationSchema = Yup.object().shape({
-  aantalPersonen: Yup.number()
-    .min(1, "Minimaal één persoon is vereist")
-    .max(10, "Maximaal tien personen zijn toegestaan")
-    .required("Aantal personen is verplicht"),
-  datum: Yup.date()
-    .min(new Date(), "Datum moet in de toekomst zijn")
-    .required("Datum is verplicht"),
-  tijdstip: Yup.string()
-    .oneOf(["12:00", "13:00", "14:00", "15:00", "16:00"], "Ongeldig tijdstip")
-    .required("Tijdstip is verplicht"),
-  situatie: Yup.string()
-    .oneOf(["Zakelijk", "Romantisch", "Familie", "Vrienden"], "Ongeldige situatie")
-    .required("Situatie is verplicht"),
+  people: Yup.number()
+    .oneOf([1, 2, 3, 4, 5, 6, 7, 8], "Invalid number of people")
+    .required("required"),
+  date: Yup.date()
+    .min(new Date(), "Date should be in the future")
+    .required("required"),
+  time: Yup.string()
+    .oneOf(["18:00", "18:30", "19:00", "19:30", "20:00", "20:30"], "Invalid time")
+    .required("required"),
+  occasion: Yup.string()
+    .oneOf(["Birthday", "Engagement", "Anniversary"], "Invalid occasion"),
   seatingArea: Yup.string()
-    .oneOf(["Binnen", "Buiten", "Terras"], "Ongeldige seating area")
-    .required("Seating area is verplicht"),
-  notities: Yup.string().max(100, "Maximaal 100 tekens zijn toegestaan"),
+    .oneOf(["Inside", "Outside"], "Invalid seating area")
+    .required("required"),
+  notes: Yup.string().max(100, "Maximum of 100 characters"),
 });
 
-// Definieer een initiële waarde voor de formuliervelden
 const initialValues = {
-  aantalPersonen: "",
-  datum: "",
-  tijdstip: "",
-  situatie: "",
+  people: "",
+  date: "",
+  time: "",
+  occasion: "",
   seatingArea: "",
-  notities: "",
+  notes: "",
 };
 
-// Definieer een functie om de formuliergegevens te verwerken
 const onSubmit = (values) => {
-  // Hier kunt u de formuliergegevens naar een API sturen of opslaan in een database
-  // Voor nu tonen we de gegevens gewoon in een alert
   alert(JSON.stringify(values, null, 2));
 };
 
-// Definieer een React component om het formulier te renderen
 function BookingForm() {
   return (
     <div className="container">
-      <h1>Online tafel reservering</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -54,86 +188,96 @@ function BookingForm() {
         {({ errors, touched }) => (
           <Form>
             <div className="form-group">
-              <label htmlFor="aantalPersonen">Aantal personen</label>
+              <label htmlFor="people">Number of People</label>
               <Field
-                type="number"
-                name="aantalPersonen"
-                id="aantalPersonen"
+                as="select"
+                name="people"
+                id="people"
                 className={
-                  errors.aantalPersonen && touched.aantalPersonen
+                  errors.people && touched.people
                     ? "form-control is-invalid"
                     : "form-control"
                 }
-              />
+              >
+                <option value="">Number of people</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+              </Field>
               <ErrorMessage
-                name="aantalPersonen"
+                name="people"
                 component="div"
                 className="invalid-feedback"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="datum">Datum</label>
+              <label htmlFor="date">Date</label>
               <Field
                 type="date"
-                name="datum"
-                id="datum"
+                name="date"
+                id="date"
                 className={
-                  errors.datum && touched.datum
+                  errors.date && touched.date
                     ? "form-control is-invalid"
                     : "form-control"
                 }
               />
               <ErrorMessage
-                name="datum"
+                name="date"
                 component="div"
                 className="invalid-feedback"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="tijdstip">Tijdstip</label>
+              <label htmlFor="time">Time</label>
               <Field
                 as="select"
-                name="tijdstip"
-                id="tijdstip"
+                name="time"
+                id="time"
                 className={
-                  errors.tijdstip && touched.tijdstip
+                  errors.time && touched.time
                     ? "form-control is-invalid"
                     : "form-control"
                 }
               >
-                <option value="">Kies een tijdstip</option>
-                <option value="12:00">12:00</option>
-                <option value="13:00">13:00</option>
-                <option value="14:00">14:00</option>
-                <option value="15:00">15:00</option>
-                <option value="16:00">16:00</option>
+                <option value="">Time</option>
+                <option value="18:00">18:00</option>
+                <option value="18:30">18:30</option>
+                <option value="19:00">19:00</option>
+                <option value="19:30">19:30</option>
+                <option value="20:00">20:00</option>
+                <option value="20:30">20:30</option>
               </Field>
               <ErrorMessage
-                name="tijdstip"
+                name="time"
                 component="div"
                 className="invalid-feedback"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="situatie">Situatie</label>
+              <label htmlFor="occasion">Occasion</label>
               <Field
                 as="select"
-                name="situatie"
-                id="situatie"
+                name="occasion"
+                id="occasion"
                 className={
-                  errors.situatie && touched.situatie
+                  errors.occasion && touched.occasion
                     ? "form-control is-invalid"
                     : "form-control"
                 }
               >
-                <option value="">Kies een situatie</option>
-                <option value="Zakelijk">Zakelijk</option>
-                <option value="Romantisch">Romantisch</option>
-                <option value="Familie">Familie</option>
-                <option value="Vrienden">Vrienden</option>
+                <option value="">Occasion</option>
+                <option value="Birthday">Birthday</option>
+                <option value="Engagement">Engagement</option>
+                <option value="Anniversary">Anniversary</option>
               </Field>
               <ErrorMessage
-                name="situatie"
+                name="occasion"
                 component="div"
                 className="invalid-feedback"
               />
@@ -150,10 +294,9 @@ function BookingForm() {
                     : "form-control"
                 }
               >
-                <option value="">Kies een seating area</option>
-                <option value="Binnen">Binnen</option>
-                <option value="Buiten">Buiten</option>
-                <option value="Terras">Terras</option>
+                <option value="">Seating area</option>
+                <option value="Inside">Inside</option>
+                <option value="Outside">Outside</option>
               </Field>
               <ErrorMessage
                 name="seatingArea"
@@ -162,20 +305,21 @@ function BookingForm() {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="notities">Notities (Optioneel)</label>
+              <label htmlFor="notes">Notes (optional)</label>
               <Field
                 as="textarea"
-                name="notities"
-                id="notities"
+                name="notes"
+                id="notes"
+                placeholder="Any notes? E.g. allergies or other requests"
                 rows={3}
                 className={
-                  errors.notities && touched.notities
+                  errors.notes && touched.notes
                     ? "form-control is-invalid"
                     : "form-control"
                 }
               />
               <ErrorMessage
-                name="notities"
+                name="notes"
                 component="div"
                 className="invalid-feedback"
               />

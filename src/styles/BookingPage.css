@@ -1,0 +1,56 @@
+.booking-page {
+    padding: 0 0 100px 0;
+}
+
+.booking-header {
+    grid-column: 1/5;
+    background-color: var(--primary-green);
+    height: 156px;
+    padding: 0;
+    align-content: center;
+}
+
+.booking-title {
+    grid-column: 2/4;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.booking-page img {
+    width: 393px;
+    height: 395px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+.booking-item {
+    grid-column: 2/4;
+}
+
+select {
+    font-family: 'Karla';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.form-group label {
+    display: none;
+}
+
+.dropdown {
+    width: 340px;
+    height: 60px;
+    background: var(--highlight-lgrey);
+    max-width: minmax(auto,410px);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    border: none;
+    align-content: center;
+}
+
+.dropdown option {
+    align-content: center;
+}
