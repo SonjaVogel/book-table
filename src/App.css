@@ -117,6 +117,10 @@ p {
   color: var(--secondary-dpeach);
 }
 
+.error-message {
+  color: red;
+}
+
 button {
   background: #F4CE14;
   height: 60px;

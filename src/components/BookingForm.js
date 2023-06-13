@@ -51,14 +51,169 @@ const fieldStyle = {
   padding: "0px",
 }
 
-export default function BookingForm() {
+export default function BookingForm(props) {
 
-    const [availableTimes, setAvailableTimes] = useState(["18:00", "18:30", "19:00", "19:30", "20:00", "20:30"]);
+    return (
+        <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+        >
+
+        {({ errors, touched })=> (
+          <Form>
+            <SimpleGrid minChildWidth='340px' spacing='24px'>
+            <Box height="60px">
+                <Field name="people">
+                    {({ field }) => (
+                    // Add aria-label to provide a descriptive label for the select field
+                    // Add aria-errormessage to link the error message with the select field
+                    // Add aria-invalid to indicate that the select field has an invalid value
+                    <Select
+                        {...field}
+                        placeholder="Number of people"
+                        aria-label="Number of people"
+                        aria-errormessage="people-error"
+                        aria-invalid={errors.people && touched.people ? "true" : "false"}
+                        mb={2}
+                        {...fieldStyle}
+                        value={field.value}
+                    >
+                        <option className="dropdown-option" value="1">1</option>
+                        <option style={{ borderBottom: '1px dashed #949393' }} value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </Select>
+                    )}
+                </Field>
+                {/* Add aria-hidden to hide the icon from assistive technologies */}
+                <i className="fas fa-user-group fa-xl" aria-hidden="true"></i>
+                {/* // Use a span element with a class name and a descriptive id for the error message
+                // Add role="alert" to make it a live region */}
+                {errors.people && touched.people && 
+                    <span id="people-error" class="error-message" role="alert" >
+                        {errors.people}
+                    </span>}
+            </Box>
+
+            <Box height="60px">
+                <Field name="date">
+                {({ field }) => (
+                    <Input 
+                        {...field}
+                        type="date"
+                        placeholder="Date"
+                        aria-errormessage="date-error"
+                        mb={2}
+                        {...fieldStyle}
+                        onChange={(e) => {
+                            field.onChange(e);
+                            props.dispatch({ type: "changeDate", payload: field.value });
+                          }}
+                    />
+                )}
+                </Field>
+                <i className="fa-solid fa-calendar-days fa-xl" aria-hidden="true"></i>
+                {errors.date && touched.date && <span id="date-error" class="error-message" role="alert" >{errors.date}</span>}
+            </Box>
+
+            <Box height="60px">
+                <Field name="time">
+                    {({ field }) => (
+                    <Select
+                        {...field}
+                        placeholder="Time"
+                        aria-label="Time"
+                        aria-errormessage="time-error"
+                        mb={2}
+                        {...fieldStyle}
+                        value={field.value}
+                    >
+                        {props.availableTimes && props.availableTimes.map((time) => ( <option key={time} value={time}>{time}</option> ))}
+                    </Select>
+                    )}
+                </Field>
+                <i className="fa-solid fa-clock fa-xl" aria-hidden="true"></i>
+                {errors.time && touched.time && <span id="time-error" class="error-message" role="alert" >{errors.time}</span>}
+            </Box>
+
+            <Box height="60px">
+                <Field name="occasion">
+                {({ field }) => (
+                    <Select {...field} placeholder="Occasion" aria-label="Occasion" mb={2} {...fieldStyle} 
+                        aria-errormessage="occasion-error">
+                    <option value="birthday">Birthday</option>
+                    <option value="engagement">Engagement</option>
+                    <option value="anniversary">Anniversary</option>
+                    </Select>
+                )}
+                </Field>
+                <i className="fa-solid fa-champagne-glasses fa-xl" aria-hidden="true"></i>
+                {errors.occasion && touched.occasion && <span id="occasion-error" class="error-message" role="alert" >{errors.occasion}</span>}
+            </Box>
+
+            <Box height="60px">
+                <Field name="location">
+                {({ field }) => (
+                    <Select {...field} placeholder="Seating location" aria-label="Seating location" mb={2} {...fieldStyle}
+                        aria-errormessage="location-error">
+                    <option value="inside">Inside</option>
+                    <option value="outside">Outside</option>
+                    </Select>
+                )}
+                </Field>
+                <i className="fa-solid fa-chair fa-xl" aria-hidden="true"></i>
+                {errors.location && touched.location && <span id="location-error" class="error-message" role="alert" >{errors.location}</span>}
+            </Box>
+
+            <Box height="60px">
+                <Field name="name">
+                {({ field }) => (
+                    <Input {...field} type="text" placeholder="Name" aria-label="Name" mb={2} {...fieldStyle} 
+                        aria-errormessage="name-error"/>
+                )}
+                </Field>
+                <i className="fa-solid fa-user fa-lg fa-input-icons" aria-hidden="true"></i>
+                {errors.name && touched.name && <span id="name-error" class="error-message" role="alert" >{errors.name}</span>}
+            </Box>
+
+            <Box height="60px">
+                <Field name="email">
+                {({ field }) => (
+                    <Input {...field} type="email" placeholder="Email" aria-label="Email" mb={2} {...fieldStyle} 
+                        aria-errormessage="email-error"/>
+                )}
+                </Field>
+                <i className="fa-solid fa-envelope fa-lg fa-input-icons" aria-hidden="true"></i>
+                {errors.email && touched.email && <span id="email-error" class="error-message" role="alert" >{errors.email}</span>}
+            </Box>
+
+            <Box height="60px">
+                <Field name="notes">
+                {({ field }) => (
+                    <Input {...field} type="text" placeholder="Notes" aria-label="Notes" mb="2" {...fieldStyle} 
+                        aria-errormessage="notes-error"/>
+                )}
+                </Field>
+                <i className="fa-solid fa-comment fa-lg fa-input-icons" aria-hidden="true"></i>
+                {errors.notes && touched.notes && <span id="notes-error" class="error-message" role="alert" >{errors.notes}</span>}
+            </Box>
+
+            <Button type="submit" width="340px" data-testid="reserve-button">Reserve Table</Button>
+            </SimpleGrid>
+        </Form>
+        )}
+    </Formik>
+  );
+}
 
 
-    /* const {values} = useFormikContext();
+/* const {values} = useFormikContext();
 
-  
     useEffect(() => {
 
         if (values.date === "2023-06-15" && values.location === "outside") {
@@ -80,133 +235,3 @@ export default function BookingForm() {
             console.error(error);
           });
       }, [values.date, values.location]); */
-
-    return (
-        <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={handleSubmit}
-        >
-
-        {({ errors, touched })=> (
-          <Form>
-            <SimpleGrid minChildWidth='340px' spacing='24px'>
-            <Box height="60px">
-                <Field name="people">
-                    {({ field }) => (
-                    <Select
-                        {...field}
-                        placeholder="Number of people"
-                        mb={2}
-                        {...fieldStyle}
-                        value={field.value}
-                        >
-                        <option className="dropdown-option" value="1">1</option>
-                        <option style={{ borderBottom: '1px dashed #949393' }} value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                    </Select>
-                    )}
-                </Field>
-                <i className="fas fa-user-group fa-xl" ></i>
-                {errors.people && touched.people && <Box color="red" mb={2}>{errors.people}</Box>}
-            </Box>
-
-            <Box height="60px">
-                <Field name="date">
-                {({ field }) => (
-                    <Input {...field} type="date" placeholder="Date" mb={2} {...fieldStyle}/>
-                )}
-                </Field>
-                <i className="fa-solid fa-calendar-days fa-xl" ></i>
-                {errors.date && touched.date && <Box color="red" mb={2}>{errors.date}</Box>}
-            </Box>
-
-            <Box height="60px">
-                <Field name="time">
-                    {({ field }) => (
-                    <Select
-                        {...field}
-                        placeholder="Time"
-                        mb={2}
-                        {...fieldStyle}
-                        value={field.value}
-                    >
-                        {availableTimes.map((time) => (
-                        <option key={time} value={time}>{time}</option>
-                        ))}
-                    </Select>
-                    )}
-                </Field>
-                <i className="fa-solid fa-clock fa-xl"></i>
-                {errors.time && touched.time && <Box color="red" mb={2}>{errors.time}</Box>}
-            </Box>
-
-            <Box height="60px">
-                <Field name="occasion">
-                {({ field }) => (
-                    <Select {...field} placeholder="Occasion" mb={2} {...fieldStyle}>
-                    <option value="birthday">Birthday</option>
-                    <option value="engagement">Engagement</option>
-                    <option value="anniversary">Anniversary</option>
-                    </Select>
-                )}
-                </Field>
-                <i className="fa-solid fa-champagne-glasses fa-xl"></i>
-                {errors.occasion && touched.occasion && <Box color="red" mb={2}>{errors.occasion}</Box>}
-            </Box>
-
-            <Box height="60px">
-                <Field name="location">
-                {({ field }) => (
-                    <Select {...field} placeholder="Seating location" mb={2} {...fieldStyle}>
-                    <option value="inside">Inside</option>
-                    <option value="outside">Outside</option>
-                    </Select>
-                )}
-                </Field>
-                <i className="fa-solid fa-chair fa-xl"></i>
-                {errors.location && touched.location && <Box color="red" mb={2}>{errors.location}</Box>}
-            </Box>
-
-            <Box height="60px">
-                <Field name="name">
-                {({ field }) => (
-                    <Input {...field} type="text" placeholder="Name" mb={2} {...fieldStyle} />
-                )}
-                </Field>
-                <i className="fa-solid fa-user fa-lg fa-input-icons"></i>
-                {errors.name && touched.name && <Box color="red" mb={2}>{errors.name}</Box>}
-            </Box>
-
-            <Box height="60px">
-                <Field name="email">
-                {({ field }) => (
-                    <Input {...field} type="email" placeholder="Email" mb={2} {...fieldStyle} />
-                )}
-                </Field>
-                <i className="fa-solid fa-envelope fa-lg fa-input-icons"></i>
-                {errors.email && touched.email &&<Box color="red" mb="2">{errors.email}</Box>}
-            </Box>
-
-            <Box height="60px">
-                <Field name="notes">
-                {({ field }) => (
-                    <Input {...field} type="text" placeholder="Notes" mb="2" {...fieldStyle} />
-                )}
-                </Field>
-                <i className="fa-solid fa-comment fa-lg fa-input-icons"></i>
-                {errors.notes && touched.notes &&<Box color="red" mb="2">{errors.notes}</Box>}
-            </Box>
-
-            <Button type="submit" width="340px" colorScheme="blue">Reserve Table</Button>
-            </SimpleGrid>
-        </Form>
-        )}
-    </Formik>
-  );
-}
