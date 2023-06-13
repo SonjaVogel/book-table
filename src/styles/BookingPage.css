@@ -28,16 +28,17 @@
     grid-column: 2/4;
 }
 
+/* Works for all dropdowns (people, time, location, occasion) */
 .booking-page i {
     position: relative;
     left: 20px;
     top: -43px;
-
 }
 
-.fa-envelope {
+/* Works for calendar and text input types */
+.icon-text-calendar i {
     position: relative;
-    left: -50px;
+    right: 320px;
 }
 
  select, input{
@@ -45,8 +46,6 @@
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
-    line-height: 21px;
-    align: center;
     height: 60px;
     width: 340px;
     border-radius: 16px;
@@ -56,55 +55,7 @@
     padding-inline-end: 0;
 }
 
-select .dropdown-option {
-    border-bottom: 1px dashed #949393;
-    border-radius: 0;
-    height: 60px;
-}
-
-select option:hover {
-    background: orange;
-}
-
-select option {
-    border: none;
-    border-radius: 0;
-}
-
-input:touched, select:touched {
-    background: var(--primary-green);
-    color: white;
-}
 
 .chakra-select__icon-wrapper {
     right: 5%;
 }
-
-/* option {
-    background: var(--highlight-lgrey);
-    height: 60px;
-    border-radius: 0;
-    border-bottom: 1px dashed #949393;
-} */
-
-/*
-.form-group label {
-    display: none;
-}
-
-.dropdown {
-    width: 340px;
-    height: 60px;
-    background: var(--highlight-lgrey);
-    max-width: minmax(auto,410px);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 16px;
-    border: none;
-    align-content: center;
-}
-
-.dropdown option {
-    align-content: center;
-}
-
- */

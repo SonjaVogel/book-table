@@ -40,14 +40,8 @@ const handleSubmit = (values, actions) => {
 // Array for the styling of the form fields
 const fieldStyle = {
   bg: "#EDEFEE",
-  height: "60px",
   width: "340px",
-  border: "none",
-  radius: "16px",
-  boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
   textAlign: "center",
-  _focus: { outline: "none" },
-  _valid: { bg:"#495E57", color:"white"},
   padding: "0px",
 }
 
@@ -79,8 +73,8 @@ export default function BookingForm(props) {
                         {...fieldStyle}
                         value={field.value}
                     >
-                        <option className="dropdown-option" value="1">1</option>
-                        <option style={{ borderBottom: '1px dashed #949393' }} value="2">2</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
                         <option value="5">5</option>
@@ -117,7 +111,9 @@ export default function BookingForm(props) {
                     />
                 )}
                 </Field>
-                <i className="fa-solid fa-calendar-days fa-xl" aria-hidden="true"></i>
+                <div className="icon-text-calendar">
+                    <i className="fa-solid fa-calendar-days fa-xl" aria-hidden="true"></i>
+                </div>
                 {errors.date && touched.date && <span id="date-error" class="error-message" role="alert" >{errors.date}</span>}
             </Box>
 
@@ -177,7 +173,9 @@ export default function BookingForm(props) {
                         aria-errormessage="name-error"/>
                 )}
                 </Field>
-                <i className="fa-solid fa-user fa-lg fa-input-icons" aria-hidden="true"></i>
+                <div className="icon-text-calendar">
+                    <i className="fa-solid fa-user fa-xl fa-input-icons" aria-hidden="true"></i>
+                </div>
                 {errors.name && touched.name && <span id="name-error" class="error-message" role="alert" >{errors.name}</span>}
             </Box>
 
@@ -188,7 +186,9 @@ export default function BookingForm(props) {
                         aria-errormessage="email-error"/>
                 )}
                 </Field>
-                <i className="fa-solid fa-envelope fa-lg fa-input-icons" aria-hidden="true"></i>
+                <div className="icon-text-calendar">
+                    <i className="fa-solid fa-envelope fa-xl fa-input-icons" aria-hidden="true"></i>
+                </div>
                 {errors.email && touched.email && <span id="email-error" class="error-message" role="alert" >{errors.email}</span>}
             </Box>
 
@@ -199,7 +199,9 @@ export default function BookingForm(props) {
                         aria-errormessage="notes-error"/>
                 )}
                 </Field>
-                <i className="fa-solid fa-comment fa-lg fa-input-icons" aria-hidden="true"></i>
+                <div className="icon-text-calendar">
+                    <i className="fa-solid fa-comment fa-xl fa-input-icons" aria-hidden="true"></i>
+                </div>
                 {errors.notes && touched.notes && <span id="notes-error" class="error-message" role="alert" >{errors.notes}</span>}
             </Box>
 
