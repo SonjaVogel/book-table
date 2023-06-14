@@ -50,12 +50,50 @@
     width: 340px;
     border-radius: 16px;
     border: none;
+    outline: 0px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    -webkit-padding-end: 0;
-    padding-inline-end: 0;
+    appearance: none;
 }
 
-
 .chakra-select__icon-wrapper {
-    right: 5%;
+    right: 10px;
+}
+
+select::-ms-expand {
+    display: none;
+  }
+
+  select {
+    position: relative;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1.75em;
+  }
+
+  .chakra-select__icon {
+    width: 1.75em !important;
+    height: 1.75em !important;
+}
+
+/* input[type="date"]::-webkit-calendar-picker-indicator {
+    position: relative;
+    right: 300px;
+    color: #ededed;
+  }
+
+input[type="date"]::-moz-calendar-picker-indicator {
+} */
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
 }

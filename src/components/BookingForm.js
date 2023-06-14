@@ -1,13 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Formik, Form, Field, useFormikContext } from "formik";
+import React from "react";
+import { Formik, Form, Field} from "formik";
 import * as Yup from "yup";
 import { Button, Input, Box, Select, SimpleGrid } from "@chakra-ui/react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserGroup } from '@fortawesome/free-solid-svg-icons';
 import '@fortawesome/fontawesome-free/css/all.css';
-import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { useFormikContext } from "formik";
 
-// Validation schema for the form fields
 const validationSchema = Yup.object().shape({
   people: Yup.number().min(1, "At least one person is required").max(8, "Maximum 8 people are allowed").required("Number of people is required"),
   date: Yup.date().min(new Date(), "Date must be in the future").required("Date is required"),
@@ -19,7 +16,6 @@ const validationSchema = Yup.object().shape({
   notes: Yup.string()
 });
 
-// Initial values for the form fields
 const initialValues = {
   people: "",
   date: "",
@@ -31,19 +27,58 @@ const initialValues = {
   notes: ""
 };
 
-// Submit handler for the form
 const handleSubmit = (values, actions) => {
   console.log(values);
   actions.resetForm();
 };
 
-// Array for the styling of the form fields
-const fieldStyle = {
-  bg: "#EDEFEE",
-  width: "340px",
-  textAlign: "center",
-  padding: "0px",
-}
+const CustomIcon = ({ name, icon, ...props }) => {
+    const { touched, errors } = useFormikContext();
+    return (
+      <i
+        className={"fas fa-xl fa-" + icon}
+        aria-hidden="true"
+        style={{
+          color: touched[name] && !errors[name] ? "var(--highlight-lgrey)" : "#000000",
+        }}
+        {...props}
+      ></i>
+    );
+  };
+
+  const fieldStyle = {
+    width: "340px",
+    textAlign: "center",
+    bg: "#EDEFEE",
+  };
+
+const CustomSelect = ({ name, ...props}) => {
+ const { touched, errors } = useFormikContext();
+ return (
+   <Select
+    name={name}
+        {...fieldStyle}
+        {...props}
+        bg={touched[name] && !errors[name] ? "var(--primary-green)" : "#EDEFEE"}
+        color={touched[name] && !errors[name] ? "var(--highlight-lgrey)" : "black"}
+        textColor={touched[name] && !errors[name] ? "var(--highlight-lgrey)" : "black"}
+    />
+ );
+};
+
+const CustomInput = ({ name, ...props}) => {
+    const { touched, errors } = useFormikContext();
+    return (
+      <Input
+       name={name}
+           {...fieldStyle}
+           {...props}
+           bg={touched[name] && !errors[name] ? "var(--primary-green)" : "#EDEFEE"}
+           color={touched[name] && !errors[name] ? "var(--highlight-lgrey)" : "black"}
+           textColor={touched[name] && !errors[name] ? "var(--highlight-lgrey)" : "black"}
+       />
+    );
+   };
 
 export default function BookingForm(props) {
 
@@ -52,6 +87,7 @@ export default function BookingForm(props) {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
+        validateOnChange={true}
         >
 
         {({ errors, touched })=> (
@@ -59,19 +95,22 @@ export default function BookingForm(props) {
             <SimpleGrid minChildWidth='340px' spacing='24px'>
             <Box height="60px">
                 <Field name="people">
-                    {({ field }) => (
+                    {({ field, form }) => (
                     // Add aria-label to provide a descriptive label for the select field
                     // Add aria-errormessage to link the error message with the select field
                     // Add aria-invalid to indicate that the select field has an invalid value
-                    <Select
+                    <CustomSelect
                         {...field}
                         placeholder="Number of people"
                         aria-label="Number of people"
                         aria-errormessage="people-error"
                         aria-invalid={errors.people && touched.people ? "true" : "false"}
                         mb={2}
-                        {...fieldStyle}
                         value={field.value}
+                        onChange={(e) => {
+                            form.setFieldTouched("people");
+                            form.handleChange(e);
+                          }}
                     >
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -81,11 +120,12 @@ export default function BookingForm(props) {
                         <option value="6">6</option>
                         <option value="7">7</option>
                         <option value="8">8</option>
-                    </Select>
+                    </CustomSelect>
                     )}
                 </Field>
                 {/* Add aria-hidden to hide the icon from assistive technologies */}
-                <i className="fas fa-user-group fa-xl" aria-hidden="true"></i>
+                <CustomIcon icon="user-group" name="people" />
+                {/* <i className="fas fa-user-group fa-xl" aria-hidden="true" {...fieldStyle}></i> */}
                 {/* // Use a span element with a class name and a descriptive id for the error message
                 // Add role="alert" to make it a live region */}
                 {errors.people && touched.people && 
@@ -97,13 +137,15 @@ export default function BookingForm(props) {
             <Box height="60px">
                 <Field name="date">
                 {({ field }) => (
-                    <Input 
+                    <CustomInput 
                         {...field}
                         type="date"
+                        data-date-inline-picker="true"
                         placeholder="Date"
                         aria-errormessage="date-error"
                         mb={2}
                         {...fieldStyle}
+                        onClick={field.ref}
                         onChange={(e) => {
                             field.onChange(e);
                             props.dispatch({ type: "changeDate", payload: field.value });
@@ -112,69 +154,97 @@ export default function BookingForm(props) {
                 )}
                 </Field>
                 <div className="icon-text-calendar">
-                    <i className="fa-solid fa-calendar-days fa-xl" aria-hidden="true"></i>
+                    {/* <i className="fa-solid fa-calendar-days fa-xl" aria-hidden="true"></i> */}
+                    <CustomIcon icon="calendar-days" name="date" />
                 </div>
                 {errors.date && touched.date && <span id="date-error" class="error-message" role="alert" >{errors.date}</span>}
             </Box>
 
             <Box height="60px">
                 <Field name="time">
-                    {({ field }) => (
-                    <Select
+                    {({ field, form }) => (
+                    <CustomSelect
                         {...field}
                         placeholder="Time"
                         aria-label="Time"
                         aria-errormessage="time-error"
                         mb={2}
-                        {...fieldStyle}
                         value={field.value}
+                        onChange={(e) => {
+                            form.setFieldTouched("time");
+                            form.handleChange(e);
+                          }}
                     >
                         {props.availableTimes && props.availableTimes.map((time) => ( <option key={time} value={time}>{time}</option> ))}
-                    </Select>
+                    </CustomSelect>
                     )}
                 </Field>
-                <i className="fa-solid fa-clock fa-xl" aria-hidden="true"></i>
+                {/* <i className="fa-solid fa-clock fa-xl" aria-hidden="true"></i> */}
+                <CustomIcon icon="clock" name="time" />
                 {errors.time && touched.time && <span id="time-error" class="error-message" role="alert" >{errors.time}</span>}
             </Box>
 
             <Box height="60px">
                 <Field name="occasion">
-                {({ field }) => (
-                    <Select {...field} placeholder="Occasion" aria-label="Occasion" mb={2} {...fieldStyle} 
-                        aria-errormessage="occasion-error">
+                {({ field, form }) => (
+                    <CustomSelect
+                        {...field}
+                        placeholder="Occasion"
+                        aria-label="Occasion"
+                        mb={2}
+                        {...fieldStyle}
+                        aria-errormessage="occasion-error"
+                        onChange={(e) => {
+                            form.setFieldTouched("occasion");
+                            form.handleChange(e);
+                          }}
+                    >
                     <option value="birthday">Birthday</option>
                     <option value="engagement">Engagement</option>
                     <option value="anniversary">Anniversary</option>
-                    </Select>
+                    </CustomSelect>
                 )}
                 </Field>
-                <i className="fa-solid fa-champagne-glasses fa-xl" aria-hidden="true"></i>
+                {/* <i className="fa-solid fa-champagne-glasses fa-xl" aria-hidden="true"></i> */}
+                <CustomIcon icon="champagne-glasses" name="occasion" />
                 {errors.occasion && touched.occasion && <span id="occasion-error" class="error-message" role="alert" >{errors.occasion}</span>}
             </Box>
 
             <Box height="60px">
                 <Field name="location">
-                {({ field }) => (
-                    <Select {...field} placeholder="Seating location" aria-label="Seating location" mb={2} {...fieldStyle}
-                        aria-errormessage="location-error">
+                {({ field, form }) => (
+                    <CustomSelect
+                        {...field}
+                        placeholder="Seating location"
+                        aria-label="Seating location"
+                        mb={2}
+                        {...fieldStyle}
+                        aria-errormessage="location-error"
+                        onChange={(e) => {
+                            form.setFieldTouched("location");
+                            form.handleChange(e);
+                          }}
+                    >
                     <option value="inside">Inside</option>
                     <option value="outside">Outside</option>
-                    </Select>
+                    </CustomSelect>
                 )}
                 </Field>
-                <i className="fa-solid fa-chair fa-xl" aria-hidden="true"></i>
+                {/* <i className="fa-solid fa-chair fa-xl" aria-hidden="true"></i> */}
+                <CustomIcon icon="chair" name="location" />
                 {errors.location && touched.location && <span id="location-error" class="error-message" role="alert" >{errors.location}</span>}
             </Box>
 
             <Box height="60px">
                 <Field name="name">
                 {({ field }) => (
-                    <Input {...field} type="text" placeholder="Name" aria-label="Name" mb={2} {...fieldStyle} 
+                    <CustomInput {...field} type="text" placeholder="Name" aria-label="Name" mb={2} {...fieldStyle} 
                         aria-errormessage="name-error"/>
                 )}
                 </Field>
                 <div className="icon-text-calendar">
-                    <i className="fa-solid fa-user fa-xl fa-input-icons" aria-hidden="true"></i>
+                    {/* <i className="fa-solid fa-user fa-xl fa-input-icons" aria-hidden="true"></i> */}
+                    <CustomIcon icon="user" name="name" />
                 </div>
                 {errors.name && touched.name && <span id="name-error" class="error-message" role="alert" >{errors.name}</span>}
             </Box>
@@ -182,12 +252,13 @@ export default function BookingForm(props) {
             <Box height="60px">
                 <Field name="email">
                 {({ field }) => (
-                    <Input {...field} type="email" placeholder="Email" aria-label="Email" mb={2} {...fieldStyle} 
+                    <CustomInput {...field} type="email" placeholder="Email" aria-label="Email" mb={2} {...fieldStyle} 
                         aria-errormessage="email-error"/>
                 )}
                 </Field>
                 <div className="icon-text-calendar">
-                    <i className="fa-solid fa-envelope fa-xl fa-input-icons" aria-hidden="true"></i>
+                    {/* <i className="fa-solid fa-envelope fa-xl fa-input-icons" aria-hidden="true"></i> */}
+                    <CustomIcon icon="envelope" name="email" />
                 </div>
                 {errors.email && touched.email && <span id="email-error" class="error-message" role="alert" >{errors.email}</span>}
             </Box>
@@ -195,12 +266,13 @@ export default function BookingForm(props) {
             <Box height="60px">
                 <Field name="notes">
                 {({ field }) => (
-                    <Input {...field} type="text" placeholder="Notes" aria-label="Notes" mb="2" {...fieldStyle} 
+                    <CustomInput {...field} type="text" placeholder="Notes" aria-label="Notes" mb="2" {...fieldStyle} 
                         aria-errormessage="notes-error"/>
                 )}
                 </Field>
                 <div className="icon-text-calendar">
-                    <i className="fa-solid fa-comment fa-xl fa-input-icons" aria-hidden="true"></i>
+                    {/* <i className="fa-solid fa-comment fa-xl fa-input-icons" aria-hidden="true"></i> */}
+                    <CustomIcon icon="comment" name="notes" />
                 </div>
                 {errors.notes && touched.notes && <span id="notes-error" class="error-message" role="alert" >{errors.notes}</span>}
             </Box>
