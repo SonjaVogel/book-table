@@ -1,21 +1,9 @@
 import Homepage from './Homepage';
 import BookingPage from './BookingPage';
-import { Routes, Route } from "react-router-dom";
+import ConfirmedBooking from './ConfirmedBooking';
+import { Routes, Route, useNavigate } from "react-router-dom";
 import React, { useState, useReducer, useEffect } from "react";
 import { fetchAPI, submitAPI } from '../api.js';
-
-/* window.fetchData = fetchAPI;
-window.submitData = submitAPI; */
-
-// Change the initializeTimes function to return a promise
-/* const initializeTimes = () => {
-  let date = new Date();
-  return new Promise((resolve, reject) => {
-    fetchAPI(date, function(times) {
-      resolve(times);
-    });
-  });
-} */
 
 // Change the updateTimes function to use the fetchData function
 export const updateTimesbackup = (state, action) => {
@@ -50,28 +38,39 @@ export const updateTimes = (state, action) => {
   }
 }
 
+export const submitForm = (formData, navigate) => {
+  console.log("Form data:", formData);
+  const response = submitAPI(formData);
+  console.log("Response:", response);
+  if (response) {
+    navigate("/reservation-confirmation");
+  }
+}
+
+/* export const submitForm = (formData, navigate) => {
+  console.log("Form data:", formData);
+  submitAPI(formData)
+  .then((response) => {
+    console.log("Response:", response);
+    if (response.success) {
+      navigate("/reservation-confirmation"); } })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+}
+ */
 function Main() {
   // Use useReducer with the updateTimes function and an empty array as initial state
   const [date, setDate] = useState(new Date());
   const [availableTimes, dispatch] = useReducer(updateTimes, []);
-  /* const customDispatch = action => {
-    updateTimes(availableTimes, action).then(times => {
-        dispatch({type: "changeDate", payload: times});
-    });
-  } */
 
-  // Use useEffect to call initializeTimes when component mounts
-  /* useEffect(() => {
-     initializeTimes().then(times => {
-      dispatch({type: "changeDate", payload: times});
-    });
-  }, []); */ // Pass an empty array as second parameter to run effect only once
+    // Use useEffect to dispatch an action with the initial date as payload
+  useEffect(() => {
+    // Dispatch an action with today's date as payload
+    dispatch({type: "changeDate", payload: new Date()});
+  }, []); // Pass an empty array as second parameter to run effect only once
 
-  // Use useEffect to dispatch an action with the initial date as payload
-useEffect(() => {
-  // Dispatch an action with today's date as payload
-  dispatch({type: "changeDate", payload: new Date()});
-}, []); // Pass an empty array as second parameter to run effect only once
+  const navigate = useNavigate();
 
   return(
     <main>
@@ -83,7 +82,12 @@ useEffect(() => {
                     availableTimes={availableTimes}
                     dispatch={dispatch}
                     date={date}
-                    setDate={setDate} />} />
+                    setDate={setDate}
+                    navigate={navigate}
+                />
+            }
+        />
+        <Route path="/reservation-confirmation" element={<ConfirmedBooking />} />
       </Routes>
     </main>
   )

@@ -11,11 +11,14 @@ const {availableTimes, dispatch, date, setDate} = props;
                 <h1 className="booking-title">Reserve a Table</h1>
             </div>
             <div className="booking-item">
+                {/* router for showing BookingForm or ConfirmedBooking comes here */}
                 <BookingForm
                     availableTimes={props.availableTimes}
                     dispatch={props.dispatch}
                     date={props.date}
-                    setDate={props.setDate} />
+                    setDate={props.setDate}
+                    navigate={props.navigate}
+                />
             </div>
         </section>
     )

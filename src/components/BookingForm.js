@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { Button, Input, Box, Select, SimpleGrid } from "@chakra-ui/react";
 import '@fortawesome/fontawesome-free/css/all.css';
 import { useFormikContext } from "formik";
+import { submitForm } from './Main';
 
 const validationSchema = Yup.object().shape({
   people: Yup.number().min(1, "At least one person is required").max(8, "Maximum 8 people are allowed").required("Number of people is required"),
@@ -27,10 +28,10 @@ const initialValues = {
   notes: ""
 };
 
-const handleSubmit = (values, actions) => {
-  console.log(values);
+/* const handleSubmit = (values, actions, navigate) => {
+  submitForm(values, navigate);
   actions.resetForm();
-};
+}; */
 
 const CustomIcon = ({ name, icon, ...props }) => {
     const { touched, errors } = useFormikContext();
@@ -56,7 +57,7 @@ const CustomSelect = ({ name, ...props}) => {
  const { touched, errors } = useFormikContext();
  return (
    <Select
-    name={name}
+        name={name}
         {...fieldStyle}
         {...props}
         bg={touched[name] && !errors[name] ? "var(--primary-green)" : "#EDEFEE"}
@@ -82,34 +83,41 @@ const CustomInput = ({ name, ...props}) => {
 
 export default function BookingForm(props) {
 
-    const {availableTimes, dispatch, date, setDate} = props;
+    const {availableTimes, dispatch, date, setDate, navigate} = props;
 
-    // Define a function to handle the change of date in the form
-function handleDateChange(event) {
-    // Get the new value of date from the event object
-    let newDate = event.target.value;
-    // Create a new Date object from the new value of date
-    newDate = new Date(newDate);
-    // Use the setDate prop to update the date state variable in the Main component
-    setDate(newDate);
-  }
+    function handleDateChange(event) {
+        let newDate = event.target.value;
+        newDate = new Date(newDate);
+        setDate(newDate);
+    }
+
     return (
         <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={handleSubmit}
+        onSubmit={(values) => {
+            const formData = {
+                people: values.people,
+                date: date.toISOString().slice(0, 10),
+                time: values.time,
+                occasion: values.occasion,
+                location: values.location,
+                name: values.name,
+                email: values.email,
+                notes: values.notes
+            };
+            console.log("Form data:", formData);
+            submitForm(formData, navigate); }}
+        /* onSubmit={(values) => submitForm(values, navigate)} */
         validateOnChange={true}
         >
 
         {({ errors, touched })=> (
-          <Form>
+          <Form method="post">
             <SimpleGrid minChildWidth='340px' spacing='24px'>
             <Box height="60px">
                 <Field name="people">
                     {({ field, form }) => (
-                    // Add aria-label to provide a descriptive label for the select field
-                    // Add aria-errormessage to link the error message with the select field
-                    // Add aria-invalid to indicate that the select field has an invalid value
                     <CustomSelect
                         {...field}
                         placeholder="Number of people"
@@ -134,9 +142,7 @@ function handleDateChange(event) {
                     </CustomSelect>
                     )}
                 </Field>
-                {/* Add aria-hidden to hide the icon from assistive technologies */}
                 <CustomIcon icon="user-group" name="people" />
-                {/* <i className="fas fa-user-group fa-xl" aria-hidden="true" {...fieldStyle}></i> */}
                 {/* // Use a span element with a class name and a descriptive id for the error message
                 // Add role="alert" to make it a live region */}
                 {errors.people && touched.people && 
@@ -159,34 +165,18 @@ function handleDateChange(event) {
                         onClick={field.ref}
                         value={date.toISOString().slice(0, 10)}
                         onChange={(e) => {
-                            /* field.onChange(e);
-                            props.dispatch({ type: "changeDate", payload: field.value });
-                            handleDateChange(e); */
-                            /* let newDate = new Date(e.target.value);
-                            field.onChange(newDate);
+                            let newDate = new Date(e.target.value);
+                            let newEvent = {...e};
+                            newEvent.target.value = newDate;
+                            field.onChange(newEvent);
                             props.dispatch({ type: "changeDate", payload: newDate });
-                            handleDateChange(newDate);
-                            setDate(newDate); */
-                            // Create a new Date object from the input value
-  let newDate = new Date(e.target.value);
-  // Create a new event object with the same properties as e
-  let newEvent = {...e};
-  // Set the new event value to the new date
-  newEvent.target.value = newDate;
-  // Pass the new event to the field.onChange function
-  field.onChange(newEvent);
-  // Dispatch an action with the new date as payload
-  props.dispatch({ type: "changeDate", payload: newDate });
-  // Pass the new date to the handleDateChange function
-  handleDateChange(newEvent);
-  // Pass the new date to the setDate function
-  setDate(newDate);
+                            handleDateChange(newEvent);
+                            setDate(newDate);
                           }}
                     />
                 )}
                 </Field>
                 <div className="icon-text-calendar">
-                    {/* <i className="fa-solid fa-calendar-days fa-xl" aria-hidden="true"></i> */}
                     <CustomIcon icon="calendar-days" name="date" />
                 </div>
                 {errors.date && touched.date && <span id="date-error" className="error-message" role="alert" >{errors.date}</span>}
@@ -309,7 +299,11 @@ function handleDateChange(event) {
                 {errors.notes && touched.notes && <span id="notes-error" className="error-message" role="alert" >{errors.notes}</span>}
             </Box>
 
-            <Button type="submit" width="340px" data-testid="reserve-button">Reserve Table</Button>
+            <Button
+                type="submit"
+                width="340px"
+                data-testid="reserve-button"
+            >Reserve Table</Button>
             </SimpleGrid>
         </Form>
         )}
