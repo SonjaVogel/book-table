@@ -8,7 +8,7 @@ import { useFormikContext } from "formik";
 const validationSchema = Yup.object().shape({
   people: Yup.number().min(1, "At least one person is required").max(8, "Maximum 8 people are allowed").required("Number of people is required"),
   date: Yup.date().min(new Date(), "Date must be in the future").required("Date is required"),
-  time: Yup.string().oneOf(["18:00", "18:30", "19:00", "19:30", "20:00", "20:30"], "Invalid time").required("Time is required"),
+  time: Yup.string().required("Time is required"),
   occasion: Yup.string().oneOf(["birthday", "engagement", "anniversary"], "Invalid occasion"),
   location: Yup.string().oneOf(["inside", "outside"], "Invalid location").required("Seating location is required"),
   name: Yup.string().min(2, "At least 2 characters required").required("Name is required"),
@@ -82,6 +82,17 @@ const CustomInput = ({ name, ...props}) => {
 
 export default function BookingForm(props) {
 
+    const {availableTimes, dispatch, date, setDate} = props;
+
+    // Define a function to handle the change of date in the form
+function handleDateChange(event) {
+    // Get the new value of date from the event object
+    let newDate = event.target.value;
+    // Create a new Date object from the new value of date
+    newDate = new Date(newDate);
+    // Use the setDate prop to update the date state variable in the Main component
+    setDate(newDate);
+  }
     return (
         <Formik
         initialValues={initialValues}
@@ -129,7 +140,7 @@ export default function BookingForm(props) {
                 {/* // Use a span element with a class name and a descriptive id for the error message
                 // Add role="alert" to make it a live region */}
                 {errors.people && touched.people && 
-                    <span id="people-error" class="error-message" role="alert" >
+                    <span id="people-error" className="error-message" role="alert" >
                         {errors.people}
                     </span>}
             </Box>
@@ -146,9 +157,30 @@ export default function BookingForm(props) {
                         mb={2}
                         {...fieldStyle}
                         onClick={field.ref}
+                        value={date.toISOString().slice(0, 10)}
                         onChange={(e) => {
-                            field.onChange(e);
+                            /* field.onChange(e);
                             props.dispatch({ type: "changeDate", payload: field.value });
+                            handleDateChange(e); */
+                            /* let newDate = new Date(e.target.value);
+                            field.onChange(newDate);
+                            props.dispatch({ type: "changeDate", payload: newDate });
+                            handleDateChange(newDate);
+                            setDate(newDate); */
+                            // Create a new Date object from the input value
+  let newDate = new Date(e.target.value);
+  // Create a new event object with the same properties as e
+  let newEvent = {...e};
+  // Set the new event value to the new date
+  newEvent.target.value = newDate;
+  // Pass the new event to the field.onChange function
+  field.onChange(newEvent);
+  // Dispatch an action with the new date as payload
+  props.dispatch({ type: "changeDate", payload: newDate });
+  // Pass the new date to the handleDateChange function
+  handleDateChange(newEvent);
+  // Pass the new date to the setDate function
+  setDate(newDate);
                           }}
                     />
                 )}
@@ -157,7 +189,7 @@ export default function BookingForm(props) {
                     {/* <i className="fa-solid fa-calendar-days fa-xl" aria-hidden="true"></i> */}
                     <CustomIcon icon="calendar-days" name="date" />
                 </div>
-                {errors.date && touched.date && <span id="date-error" class="error-message" role="alert" >{errors.date}</span>}
+                {errors.date && touched.date && <span id="date-error" className="error-message" role="alert" >{errors.date}</span>}
             </Box>
 
             <Box height="60px">
@@ -181,7 +213,7 @@ export default function BookingForm(props) {
                 </Field>
                 {/* <i className="fa-solid fa-clock fa-xl" aria-hidden="true"></i> */}
                 <CustomIcon icon="clock" name="time" />
-                {errors.time && touched.time && <span id="time-error" class="error-message" role="alert" >{errors.time}</span>}
+                {errors.time && touched.time && <span id="time-error" className="error-message" role="alert" >{errors.time}</span>}
             </Box>
 
             <Box height="60px">
@@ -207,7 +239,7 @@ export default function BookingForm(props) {
                 </Field>
                 {/* <i className="fa-solid fa-champagne-glasses fa-xl" aria-hidden="true"></i> */}
                 <CustomIcon icon="champagne-glasses" name="occasion" />
-                {errors.occasion && touched.occasion && <span id="occasion-error" class="error-message" role="alert" >{errors.occasion}</span>}
+                {errors.occasion && touched.occasion && <span id="occasion-error" className="error-message" role="alert" >{errors.occasion}</span>}
             </Box>
 
             <Box height="60px">
@@ -232,7 +264,7 @@ export default function BookingForm(props) {
                 </Field>
                 {/* <i className="fa-solid fa-chair fa-xl" aria-hidden="true"></i> */}
                 <CustomIcon icon="chair" name="location" />
-                {errors.location && touched.location && <span id="location-error" class="error-message" role="alert" >{errors.location}</span>}
+                {errors.location && touched.location && <span id="location-error" className="error-message" role="alert" >{errors.location}</span>}
             </Box>
 
             <Box height="60px">
@@ -246,7 +278,7 @@ export default function BookingForm(props) {
                     {/* <i className="fa-solid fa-user fa-xl fa-input-icons" aria-hidden="true"></i> */}
                     <CustomIcon icon="user" name="name" />
                 </div>
-                {errors.name && touched.name && <span id="name-error" class="error-message" role="alert" >{errors.name}</span>}
+                {errors.name && touched.name && <span id="name-error" className="error-message" role="alert" >{errors.name}</span>}
             </Box>
 
             <Box height="60px">
@@ -260,7 +292,7 @@ export default function BookingForm(props) {
                     {/* <i className="fa-solid fa-envelope fa-xl fa-input-icons" aria-hidden="true"></i> */}
                     <CustomIcon icon="envelope" name="email" />
                 </div>
-                {errors.email && touched.email && <span id="email-error" class="error-message" role="alert" >{errors.email}</span>}
+                {errors.email && touched.email && <span id="email-error" className="error-message" role="alert" >{errors.email}</span>}
             </Box>
 
             <Box height="60px">
@@ -274,7 +306,7 @@ export default function BookingForm(props) {
                     {/* <i className="fa-solid fa-comment fa-xl fa-input-icons" aria-hidden="true"></i> */}
                     <CustomIcon icon="comment" name="notes" />
                 </div>
-                {errors.notes && touched.notes && <span id="notes-error" class="error-message" role="alert" >{errors.notes}</span>}
+                {errors.notes && touched.notes && <span id="notes-error" className="error-message" role="alert" >{errors.notes}</span>}
             </Box>
 
             <Button type="submit" width="340px" data-testid="reserve-button">Reserve Table</Button>
