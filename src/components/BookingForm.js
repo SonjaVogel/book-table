@@ -95,7 +95,7 @@ export default function BookingForm(props) {
         <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={(values) => {
+        /* onSubmit={(values) => {
             const formData = {
                 people: values.people,
                 date: date.toISOString().slice(0, 10),
@@ -107,13 +107,27 @@ export default function BookingForm(props) {
                 notes: values.notes
             };
             console.log("Form data:", formData);
-            submitForm(formData, navigate); }}
+            submitForm(formData, navigate); }} */
         /* onSubmit={(values) => submitForm(values, navigate)} */
         validateOnChange={true}
         >
 
         {({ errors, touched })=> (
-          <Form method="post">
+          <Form
+            method="post"
+            onSubmit={(values) => {
+                const formData = {
+                    people: values.people,
+                    date: date.toISOString().slice(0, 10),
+                    time: values.time,
+                    occasion: values.occasion,
+                    location: values.location,
+                    name: values.name,
+                    email: values.email,
+                    notes: values.notes
+                };
+                console.log("Form data:", formData);
+                submitForm(formData, navigate); }}>
             <SimpleGrid minChildWidth='340px' spacing='24px'>
             <Box height="60px">
                 <Field name="people">

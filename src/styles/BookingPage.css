@@ -10,6 +10,14 @@
     align-content: center;
 }
 
+.confirmed-booking-header {
+    grid-column: 1/5;
+    background-color: var(--primary-green);
+    height: calc(100vh - 80px);
+    padding: 0;
+    align-content: center;
+}
+
 .booking-title {
     grid-column: 2/4;
     display: flex;
