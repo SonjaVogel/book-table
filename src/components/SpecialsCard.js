@@ -15,7 +15,7 @@ function SpecialsCard(props) {
                     filter: "none",
                     marginBottom: 0,
                 }}/>
-            <Card.Body 
+            <Card.Body
                 className="card-body"
                 style={{height: "200px", display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
             <div>

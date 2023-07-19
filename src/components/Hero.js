@@ -2,6 +2,8 @@ import '../App.css';
 import '../styles/Hero.css';
 import { NavLink } from 'react-router-dom';
 
+const shortAbout = "We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.";
+
 function Hero() {
     return(
         <section className="hero grid">
@@ -10,7 +12,7 @@ function Hero() {
                     <h1>Little Lemon</h1>
                     <h2>Chicago</h2>
                     <p className="CTA-lead-text">
-                        We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.
+                        {shortAbout}
                     </p>
                     <NavLink to="/reserve-table">
                         <button>Reserve a Table</button>

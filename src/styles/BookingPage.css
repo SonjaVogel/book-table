@@ -40,16 +40,18 @@
 .booking-page i {
     position: relative;
     left: 20px;
-    top: -43px;
+    top: 40px;
+    z-index: 100;
 }
 
 /* Works for calendar and text input types */
 .icon-text-calendar i {
+    z-index: 100;
     position: relative;
     right: 320px;
 }
 
- select, input{
+ select, input {
     font-family: 'Karla';
     font-style: normal;
     font-weight: 500;
@@ -61,6 +63,17 @@
     outline: 0px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     appearance: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--highlight-lgrey);
+  -webkit-box-shadow: 0 0 0px 40rem var(--primary-green) inset;
 }
 
 .chakra-select__icon-wrapper {
@@ -71,37 +84,24 @@ select::-ms-expand {
     display: none;
   }
 
-  select {
+select {
     position: relative;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     text-indent: 1.75em;
-  }
+}
 
   .chakra-select__icon {
     width: 1.75em !important;
     height: 1.75em !important;
 }
 
-/* input[type="date"]::-webkit-calendar-picker-indicator {
-    position: relative;
-    right: 300px;
-    color: #ededed;
-  }
-
-input[type="date"]::-moz-calendar-picker-indicator {
-} */
-
 input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
     background: transparent;
-    bottom: 0;
     color: transparent;
     cursor: pointer;
-    height: auto;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: auto;
+    height: 60px;
+    width: 340px;
 }

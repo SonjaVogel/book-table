@@ -119,12 +119,13 @@ p {
 
 .error-message {
   color: red;
-  padding: 0;
+  margin-left: 20px;
+/*   padding: 0;
   margin: 0;
-  align: right;
+  align: left; */
 }
 
-#people-error,
+/* #people-error,
 #occasion-error,
 #location-error,
 #time-error {
@@ -136,9 +137,8 @@ p {
 #name-error,
 #email-error,
 #notes-error {
-  margin-top: -21px;
-  margin-left: 20px;
-}
+  margin: 0 0 50px -50px;
+} */
 
 button {
   background: #F4CE14;
