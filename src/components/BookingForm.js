@@ -9,6 +9,7 @@ import { submitForm } from './Main';
 const validationSchema = Yup.object().shape({
   people: Yup.number().min(1, "At least one person is required").max(8, "Maximum 8 people are allowed").required("Number of people is required"),
   date: Yup.date()
+        .transform((value, originalValue) => new Date(originalValue))
         .min(new Date(), "Date must be in the future")
         .required("Date is required"),
   time: Yup.string().required("Time is required"),
@@ -88,27 +89,23 @@ export default function BookingForm(props) {
     const {availableTimes, dispatch, date, setDate, navigate} = props;
     //my version
 
-    function handleDateChange(event) {
+   /*  function handleDateChange(event) {
         let newDate = event.target.value;
         newDate = new Date(newDate);
         setDate(newDate);
     }
-
-    // chat GPT versie
-    /* function handleDateChange(event) {
-        let newDate = new Date();
-        let dateParts = event.target.value.split("-");
-        newDate.setFullYear(dateParts[0]);
-        newDate.setMonth(dateParts[1] - 1);
-        newDate.setDate(dateParts[2]);
+ */
+    //chatGPT
+    function handleDateChange(event) {
+        let newDate = new Date(event.target.value);
         setDate(newDate);
-    } */
+    }
 
     return (
         <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        /* onSubmit={(values) => {
+        onSubmit={(values) => {
             const formData = {
                 people: values.people,
                 date: date.toISOString().slice(0, 10),
@@ -120,27 +117,14 @@ export default function BookingForm(props) {
                 notes: values.notes
             };
             console.log("Form data:", formData);
-            submitForm(formData, navigate); }} */
-        /* onSubmit={(values) => submitForm(values, navigate)} */
+            submitForm(formData, navigate); }}
         validateOnChange={true}
         >
 
         {({ errors, touched })=> (
           <Form
             method="post"
-            onSubmit={(values) => {
-                const formData = {
-                    people: values.people,
-                    date: date.toISOString().slice(0, 10),
-                    time: values.time,
-                    occasion: values.occasion,
-                    location: values.location,
-                    name: values.name,
-                    email: values.email,
-                    notes: values.notes
-                };
-                console.log("Form data:", formData);
-                submitForm(formData, navigate); }}>
+            >
             <SimpleGrid
                 minChildWidth='340px'
                 spacing='24px'
@@ -191,30 +175,13 @@ export default function BookingForm(props) {
                             {...field}
                             {...fieldStyle}
                             type="date"
-                            /* style={ touched.date && !errors.date ?
-                                {
-                                    color: "var(--highlight-lgrey)",
-                                    background: "var(--primary-green)",
-                                    textColor: "var(--highlight-lgrey)"
-                              } : {
-                                    color: "black",
-                                    background: "var(--highlight-lgrey)",
-                                    textColor: "black"
-                              }} */
-                            // data-date-inline-picker="true"
-                            // placeholder="Date"
                             onClick={field.ref}
                             aria-errormessage="date-error"
                             value={date.toISOString().slice(0, 10)}
-                            /* onChange={handleDateChange} */
                             onChange={(e) => {
-                                let newDate = new Date(e.target.value)
-                                let newEvent = {...e}
-                                newEvent.target.value = newDate
-                                field.onChange(newEvent)
-                                props.dispatch({ type: "changeDate", payload: newDate })
-                                handleDateChange(newEvent)
-                                setDate(newDate)
+                                field.onChange(e);
+                                handleDateChange(e);
+                                props.dispatch({ type: "changeDate", payload: new Date(e.target.value) });
                             }}
                         />
                     )}
@@ -238,7 +205,7 @@ export default function BookingForm(props) {
                                     form.handleChange(e);
                                 }}
                             >
-                                {props.availableTimes && props.availableTimes.map((time) => ( <option key={time} value={time}>{time}</option> ))}
+                                {availableTimes && availableTimes.map((time) => ( <option key={time} value={time}>{time}</option> ))}
                             </CustomSelect>
                         )}
                 </Field>
