@@ -1,7 +1,8 @@
 .navbar {
   padding: 0;
-  height: 123px;
+  height: 108px;
   align-items: center;
+  grid-template-columns: 1fr repeat(2, minmax(auto,410px)) 1fr;
 }
 
 .header-container {
@@ -13,25 +14,23 @@
 
 .logo img {
   width: 200px;
+  margin: auto 0;
 }
 
 .nav-elements {
   grid-column-end: 4;
-  margin-right: -20px;
+  margin-right: -16px;
   max-width: 600px;
   justify-self: end;
 }
 
 .nav-elements ul {
   margin: 0;
-  padding: 0 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   justify-content: flex-end;
   list-style-type: none;
-  margin: 0;
-  padding: 0;
 }
 
 .nav-elements li {
@@ -59,19 +58,19 @@
     display: block;
     grid-template-columns: none;
     height: auto;
-    margin: 16px 16px;
-    padding: 0;
+    margin: 0;
+    padding: 16px 24px;
   }
 
   .header-container {
-      align-content: top;
+      align-content: center;
   }
 
   .menu-icon {
     display: block;
     cursor: pointer;
     color: var(--primary-green);
-    vertical-align: top;
+    margin: auto 0;
   }
 
   .nav-elements {

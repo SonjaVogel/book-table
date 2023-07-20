@@ -1,6 +1,8 @@
 import '../styles/Specials.css';
+import React, { useEffect } from 'react';
 import SpecialsCardContainer from './SpecialsCardContainer';
 import Container from 'react-bootstrap/Container';
+import { addBlurEffect } from './blur';
 
 const cards = [
     {
@@ -26,7 +28,14 @@ const cards = [
     }
 ];
 
+
+
 function Specials() {
+
+    useEffect(() => {
+        addBlurEffect('.specials');
+    }, []);
+
     return(
         <section className="specials grid">
             <div className="specials-header">

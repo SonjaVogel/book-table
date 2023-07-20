@@ -2,6 +2,23 @@
     padding: 150px 0 100px;
 }
 
+/* .specials-container {
+    position: relative;
+    overflow-x: auto;
+  }
+  
+  .specials-container::after {
+    content: "";
+    position: absolute;
+    height: 300px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50px;
+    pointer-events: none;
+    background-image: linear-gradient(to right, rgba(255,255,255,0), white);
+  } */
+
 .specials-header {
     grid-column: 2/4;
     display: flex;
@@ -12,14 +29,41 @@
 .specials-container {
     grid-column: 2/4;
     overflow-x: auto;
+    position: relative;
 }
 
+.specials-container.show-blur::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50px;
+    pointer-events: none;
+    background-image: linear-gradient(to right, rgba(255,255,255,0), white);
+  }
+
+/* .specials-container::after {
+    content: '';
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 60px;
+  height: calc(100% - 20px);
+  right: 0;
+  position: absolute;
+  z-index: 9999999;
+  margin-left: auto;
+  top: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .7) 40%, #fff 70%);
+}
+ */
 .mobile {
     display: none;
 }
 
 .card {
-    padding: 12px;
+    padding: 12px 12px 12px 12px;
     width: 264px;
     margin: 0;
     gap: 0;
@@ -36,7 +80,7 @@
 .card-body {
     padding: 24px;
     margin: 0;
-    gap: 10px;
+    gap: 12px;
     background: var(--highlight-lgrey);
 }
 
@@ -45,7 +89,7 @@
 }
 
 .card:last-child {
-    padding-right: 0;
+    padding-right: 24px;
 }
 
 .specials p {
@@ -58,9 +102,6 @@
 }
 
 @media screen and (max-width: 700px) {
-    .specials {
-        padding: 75px 0 75px 0;
-    }
 
     .desktop {
         display: none;
@@ -72,16 +113,17 @@
     }
 
     .specials {
-        grid-gap: 16px;
-        padding-top: 50px;
+        grid-gap: 24px;
+        padding: 50px 0;
     }
 
-    .card {
-        padding: 8px;
+     .card {
+        padding: 6px;
     }
-
+/*
     .card:last-child {
         padding-right: 0;
-    }
+        margin-right: -24px;
+    } */
 
 }

@@ -15,7 +15,7 @@ html, body, main {
 .grid {
   display: grid;
   grid-template-columns: 1fr repeat(2, minmax(auto,410px)) 1fr;
-  gap: 20px;
+  gap: 24px;
   padding: 100px 0 100px 0;
 }
 
@@ -36,6 +36,7 @@ h1 {
   line-height: 77px;
   color: var(--primary-yellow);
   margin: 0;
+  padding: 0;
 }
 
 h2 {
@@ -45,7 +46,8 @@ h2 {
   font-size: 40px;
   line-height: 48px;
   color: var(--primary-green);
-  margin: 0 0 0.5em 0;
+  margin: 0 0 .75em 0;
+  padding: 0;
 }
 
 .section-title {
@@ -97,7 +99,7 @@ p {
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  color: black;
+  color: var(--highlight-dgrey);
 }
 
 .CTA-lead-text {
@@ -121,21 +123,6 @@ p {
   color: red;
 }
 
-/* #people-error,
-#occasion-error,
-#location-error,
-#time-error {
-  margin: 0px;
-  padding: 0px;
-}
-
-#date-error,
-#name-error,
-#email-error,
-#notes-error {
-  margin: 0 0 50px -50px;
-} */
-
 button {
   background: #F4CE14;
   height: 60px;
@@ -147,6 +134,7 @@ button {
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
+  color: black;
   cursor: pointer;
 }
 
@@ -155,9 +143,16 @@ button:hover {
   color: white;
 }
 
+@media screen and (max-width: 765px) {
+  .grid {
+    padding: 75px 24px;
+    grid-template-columns: auto;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .grid {
-    padding: 75px 0 75px 0;
+    padding: 50px 24px;
   }
 }
 

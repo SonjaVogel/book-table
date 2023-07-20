@@ -20,7 +20,7 @@ const Header = () => {
               </NavLink>
             </div>
             <div className="menu-icon" onClick={handleShowNavbar}>
-                <FontAwesomeIcon icon={faBars} size="3x" />
+                <FontAwesomeIcon icon={faBars} size="2x" />
             </div>
             <div className={`nav-elements  ${showNavbar && 'active'}`}>
             <ul>

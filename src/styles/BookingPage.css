@@ -4,6 +4,7 @@
 
 .booking-header {
     grid-column: 1/5;
+    grid-template-columns: 1fr repeat(2, minmax(auto,410px)) 1fr;
     background-color: var(--primary-green);
     height: 156px;
     padding: 0;
@@ -13,9 +14,13 @@
 .confirmed-booking-header {
     grid-column: 1/5;
     background-color: var(--primary-green);
-    height: calc(100vh - 80px);
+    height: calc(100vh - 100px);
     padding: 0;
     align-content: center;
+}
+
+.confirmed-booking-header .booking-title {
+    margin-top: -100px;
 }
 
 .booking-title {
@@ -65,9 +70,10 @@
     appearance: none;
     padding: 0;
     margin: 0;
+    text-align: center;
+    text-align-last: center;
+    -moz-text-align-last: center;
 }
-
-
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
@@ -104,4 +110,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
     height: 60px;
     width: 340px;
+}
+
+@media screen and (max-width: 760px) {
+    .chakra-simple-grid {
+        justify-items: center;
+    }
+
+    .booking-title {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .booking-title {
+        font-size: 52px;    }
 }

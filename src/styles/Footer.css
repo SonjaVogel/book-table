@@ -3,6 +3,10 @@ footer {
     color: var(--primary-green);
 }
 
+footer.grid {
+    gap: 0;
+}
+
 .footer-item:first-child {
     grid-column: 2;
 }
@@ -10,6 +14,7 @@ footer {
 .footer-item:nth-child(2) {
     grid-column: 3;
     justify-self: end;
+    width: auto;
     max-width: 50vw;
 }
 
@@ -40,10 +45,13 @@ footer p {
     margin: 0;
 }
 
-@media screen and (max-width: 500px) {
+address {
+    justify-content: right;
+}
+/* @media screen and (max-width: 500px) {
 
     footer p {
         max-width: 60vw;
         justify-content: end;
     }
-  }
+  } */

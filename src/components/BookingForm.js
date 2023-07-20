@@ -43,12 +43,17 @@ const CustomIcon = ({ name, icon, ...props }) => {
         className={"fas fa-xl fa-" + icon}
         aria-hidden="true"
         style={{
-          color: touched[name] && !errors[name] ? "var(--highlight-lgrey)" : "#000000",
+          color: touched[name] && !errors[name] ? "var(--highlight-lgrey)" : ("#000000"),
         }}
+        /* style={{
+            color: errors[name] ? "#000000" : (touched[name] ? "var(--highlight-lgrey)": "#000000"),
+        }} */
         {...props}
       ></i>
     );
 };
+
+
 
 const fieldStyle = {
     width: "340px",
@@ -128,6 +133,7 @@ export default function BookingForm(props) {
             <SimpleGrid
                 minChildWidth='340px'
                 spacing='24px'
+                className='chakra-simple-grid'
                 >
             <Box height="60px">
                 <CustomIcon icon="user-group" name="people" />
