@@ -33,7 +33,7 @@ function Reviews() {
     return(
     <section className="reviews grid">
         <h2 className="reviews-title">What our customers say</h2>
-        <Container className="reviews-container">
+        <Container className="scrollable-cards-container">
             <ReviewsCardContainer cards={reviews} />
         </Container>
     </section>

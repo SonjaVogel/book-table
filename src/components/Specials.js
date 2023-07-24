@@ -46,7 +46,7 @@ function Specials() {
                 </h2>
                 <button className="desktop">Online Menu</button>
             </div>
-            <Container className="specials-container">
+            <Container className="scrollable-cards-container">
                 <SpecialsCardContainer cards={cards} />
             </Container>
             <button className="mobile">Online Menu</button>

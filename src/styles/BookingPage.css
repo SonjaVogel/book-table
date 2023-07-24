@@ -112,6 +112,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 340px;
 }
 
+@keyframes beat {
+    0% {
+      -webkit-transform: scale(1, 1);
+              transform: scale(1, 1);
+    }
+    100% {
+      -webkit-transform: scale(0.8,0.8);
+              transform: scale(0.8, 0.8);
+    }
+  }
+
 @media screen and (max-width: 760px) {
     .chakra-simple-grid {
         justify-items: center;

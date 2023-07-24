@@ -16,7 +16,7 @@ html, body, main {
   display: grid;
   grid-template-columns: 1fr repeat(2, minmax(auto,410px)) 1fr;
   gap: 24px;
-  padding: 100px 0 100px 0;
+  padding: 100px 0;
 }
 
 main img {
@@ -24,8 +24,9 @@ main img {
   border-radius: 16px;
 }
 
-a {
+a, a::after {
   cursor: pointer;
+  color: var(--primary-green);
 }
 
 h1 {
@@ -136,23 +137,18 @@ button {
   font-size: 18px;
   color: black;
   cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
 }
 
 button:hover {
   background: var(--primary-green);
+  border: 1px solid white;
   color: white;
 }
 
 @media screen and (max-width: 765px) {
   .grid {
-    padding: 75px 24px;
-    grid-template-columns: auto;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .grid {
-    padding: 50px 24px;
+    padding: 75px 0;
   }
 }
 
