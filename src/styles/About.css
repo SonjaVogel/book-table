@@ -1,10 +1,9 @@
 .about {
-    grid-template-columns: 1fr minmax(auto,375px) minmax(auto,445px) 1fr;
+    grid-template-columns: 1fr minmax(200px, 370px) 450px 1fr;
 }
 
 .about h2 {
-    width: max-content;
-    padding: 0 0 0.5em 0;
+    margin-bottom: 1.25em;
 }
 
 .about-item:first-child {
@@ -14,110 +13,53 @@
 .about-item:nth-child(2) {
     grid-column: 3/4;
     text-align: right;
-    max-height: 443px;
 }
 
 .about img {
-    width: 272px;
+    width: 60%;
     height: 336px;
     object-fit: cover;
-    object-position: center;
   }
 
 .about img:first-child {
+    /* Picture on the right (behind) */
     object-position: 53% 100%;
 }
 
 .about img:nth-child(2) {
+    /* Picture on left (front) */
     position: relative;
-    top: -233px;
-    right: 173px;
+    top: -34.2%;
+    right: 40%;
     object-position: 64% 100%;
+    margin-bottom: -34.2%
 }
 
-@media screen and (min-width: 891px) {
-    .about-item:first-child {
-        max-width: 340px;
-    }
-}
-
-
- @media screen and (max-width: 890px) {
-
-    .about p {
-        max-width: 300px;
-    }
-
-}
-
-@media screen and (max-width: 840px) {
-
-    .about p {
-        max-width: 275px;
-    }
-
-}
-
-@media screen and (max-width: 790px) {
-
-    .about p {
-        max-width: 250px;
-    }
-
-}
-
-/* 
-@media screen and (max-width: 765px) {
-
-    .about p {
-        max-width: 175px;
-    }
-
-} */
-
-@media screen and (max-width: 765px) {
+@media screen and (max-width: 750px) {
 
     .about {
-        display: flex;
-        flex-direction: column;
+        grid-template-columns: 1fr auto 1fr;
     }
 
     .about-item:first-child {
-        grid-column: 2/4;
+        grid-column: 2;
     }
 
     .about-item:nth-child(2) {
-        grid-column: 2/4;
-        margin-top: 40px;
-        margin-bottom: 48px;
-        display: flex;
-        flex-direction: row;
+        grid-column: 2;
     }
 
     .about p {
-        column-span: all;
         text-align: justify;
-        max-width: calc(100vw - 48px);
     }
 
     .about img:first-child {
-        grid-column: 1/2;
-        grid-row: 2/3;
-        justify-self: end;
-        width: 50vw;
         height: 68vw;
-        object-position: 75% 100%;
     }
 
     .about img:nth-child(2) {
-        grid-column: 2/3;
-        grid-row: 1/2;
-        justify-self: start;
-        width: 45vw;
         height: 68vw;
-        top: -40px;
-        right: 28px;
-        object-position: 64% 100%;
+        top: -40%;
     }
 
 }

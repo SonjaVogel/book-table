@@ -1,0 +1,16 @@
+.reviews {
+    background: var(--primary-green);
+}
+
+.reviews-title {
+    grid-column: 2/4;
+    color: var(--primary-yellow);
+    justify-self: center;
+}
+
+@media screen and (max-width: 700px) {
+    .reviews-title {
+        font-size: 34px;
+    }
+
+}

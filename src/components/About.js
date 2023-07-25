@@ -8,8 +8,7 @@ const longAbout = [
 function About() {
 
     return(
-        <section className="about grid"
-        >
+        <section className="about grid">
             <div className="about-item">
                 <h2 className="section-title">
                     About Little Lemon
@@ -25,4 +24,4 @@ function About() {
     )
 }
 
-export default About; 
+export default About;

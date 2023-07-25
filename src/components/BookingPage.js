@@ -1,10 +1,11 @@
+import '../styles/BookingPage.css';
 import React, { useState } from "react";
 import BookingForm from './BookingForm';
-import '../styles/BookingPage.css';
 
 function BookingPage(props) {
 
-const {availableTimes, dispatch, date, setDate} = props;
+// const {availableTimes, dispatch, date, setDate} = props;
+
     return(
         <section className="grid booking-page">
             <div className="booking-header grid">

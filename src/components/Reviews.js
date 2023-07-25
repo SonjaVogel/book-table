@@ -1,5 +1,5 @@
-import '../styles/Reviews.css';
-import ReviewsCardContainer from './ReviewsCardContainer';
+import '../styles/SpecialsReviews.css';
+import CardContainer from './CardContainer';
 import Container from 'react-bootstrap/Container';
 
 const reviews = [
@@ -31,12 +31,12 @@ const reviews = [
 
 function Reviews() {
     return(
-    <section className="reviews grid">
-        <h2 className="reviews-title">What our customers say</h2>
-        <Container className="scrollable-cards-container">
-            <ReviewsCardContainer cards={reviews} />
-        </Container>
-    </section>
+        <section className="reviews grid">
+            <h2 className="reviews-title">What our customers say</h2>
+                <Container className="scrollable-cards-container">
+                    <CardContainer type="reviews" cards={reviews} />
+                </Container>
+        </section>
     )
 }
 

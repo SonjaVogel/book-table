@@ -36,10 +36,23 @@ function SpecialsCard(props) {
                         <Card.Title><h3>{props.title}</h3></Card.Title>
                         <span className="price">{props.price}</span>
                     </div>
-                        <Card.Text><p>{props.text}</p></Card.Text>
+                        <Card.Text
+                            style={{
+                                color: "#6E6F6E",
+                            }}
+                        >
+                            {props.text}
+                        </Card.Text>
                 </div>
                 <div>
-                    <Card.Link href={props.link} className="CTA-lead-text" style={{alignSelf: "flex-end"}}>
+                    <Card.Link
+                        href={props.link}
+                        className="CTA-lead-text"
+                        style={{
+                            color: "black",
+                            alignSelf: "flex-end"
+                            }}
+                        >
                         Order for delivery <FontAwesomeIcon icon={faBicycle} style={{ marginLeft: '10px'}}/>
                     </Card.Link>
                 </div>

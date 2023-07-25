@@ -3,10 +3,6 @@ footer {
     color: var(--primary-green);
 }
 
-footer.grid {
-    gap: 0;
-}
-
 .footer-item:first-child {
     grid-column: 2;
 }
@@ -14,8 +10,6 @@ footer.grid {
 .footer-item:nth-child(2) {
     grid-column: 3;
     justify-self: end;
-    width: auto;
-    max-width: 50vw;
 }
 
 footer .logo {
@@ -25,33 +19,18 @@ footer .logo {
 
 footer h2 {
     font-family: 'Karla';
-    font-style: normal;
     font-weight: 800;
     font-size: 20px;
-    line-height: 20px;
-    padding-top: 0;
+    line-height: 0.7em;
     text-transform: uppercase;
-    color: var(--primary-green);
 }
 
 footer p {
     color: var(--primary-green);
-    margin-top: 0;
+    margin: 0.8em 0;
 }
 
 .socialicon {
     width: 30px;
-    padding-right: 15px;
-    margin: 0;
+    margin-right: 15px;
 }
-
-address {
-    justify-content: right;
-}
-/* @media screen and (max-width: 500px) {
-
-    footer p {
-        max-width: 60vw;
-        justify-content: end;
-    }
-  } */

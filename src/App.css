@@ -27,6 +27,7 @@ main img {
 a, a::after {
   cursor: pointer;
   color: var(--primary-green);
+  text-decoration: none;
 }
 
 h1 {
@@ -47,12 +48,13 @@ h2 {
   font-size: 40px;
   line-height: 48px;
   color: var(--primary-green);
-  margin: 0 0 .75em 0;
+  margin: 0;
   padding: 0;
 }
 
 .section-title {
   position: relative;
+  width: max-content;
 }
 
 .section-title::before {
@@ -90,25 +92,23 @@ h3 {
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
-  line-height: 21px;
+  line-height: 22px;
   color: black;
 }
 
 p {
+  /* margin: 2em 0; */
   font-family: 'Karla';
   font-style: normal;
-  font-weight: 400;
   font-size: 16px;
-  line-height: 19px;
+  line-height: 20px;
   color: var(--highlight-dgrey);
 }
 
 .CTA-lead-text {
   font-family: 'Karla';
-  font-style: normal;
-  font-weight: 500;
   font-size: 18px;
-  line-height: 21px;
+  line-height: 22px;
 }
 
 .price {
@@ -116,7 +116,7 @@ p {
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
-  line-height: 19px;
+  line-height: 20px;
   color: var(--secondary-dpeach);
 }
 

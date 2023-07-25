@@ -36,18 +36,6 @@ export const submitForm = (formData, navigate) => {
   }
 }
 
-/* export const submitForm = (formData, navigate) => {
-  console.log("Form data:", formData);
-  submitAPI(formData)
-  .then((response) => {
-    console.log("Response:", response);
-    if (response.success) {
-      navigate("/reservation-confirmation"); } })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-}
- */
 function Main() {
   const [date, setDate] = useState(new Date());
   const [availableTimes, dispatch] = useReducer(updateTimes, []);

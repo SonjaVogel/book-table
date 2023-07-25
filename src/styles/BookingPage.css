@@ -56,6 +56,10 @@
     right: 320px;
 }
 
+.box {
+    height: 60px;
+}
+
  select, input {
     font-family: 'Karla';
     font-style: normal;
@@ -98,7 +102,7 @@ select {
     text-indent: 1.75em;
 }
 
-  .chakra-select__icon {
+.chakra-select__icon {
     width: 1.75em !important;
     height: 1.75em !important;
 }

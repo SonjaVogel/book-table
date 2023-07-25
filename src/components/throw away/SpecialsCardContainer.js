@@ -1,4 +1,4 @@
-import CardComponent from './SpecialsCard';
+import CardComponent from '../SpecialsCard';
 
 function SpecialsCardContainer(props) {
     return (
@@ -16,4 +16,4 @@ function SpecialsCardContainer(props) {
     );
 }
 
-export default SpecialsCardContainer;
+export default SpecialsCardContainer; 

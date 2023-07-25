@@ -1,10 +1,10 @@
-import '../styles/Specials.css';
+import '../styles/SpecialsReviews.css';
 import React, { useEffect } from 'react';
-import SpecialsCardContainer from './SpecialsCardContainer';
+import CardContainer from './CardContainer';
 import Container from 'react-bootstrap/Container';
 import { addBlurEffect } from './blur';
 
-const cards = [
+const specials = [
     {
         img: 'greek salad.jpg',
         title: 'Greek Salad',
@@ -47,7 +47,7 @@ function Specials() {
                 <button className="desktop">Online Menu</button>
             </div>
             <Container className="scrollable-cards-container">
-                <SpecialsCardContainer cards={cards} />
+                <CardContainer type="specials" cards={specials} />
             </Container>
             <button className="mobile">Online Menu</button>
         </section>

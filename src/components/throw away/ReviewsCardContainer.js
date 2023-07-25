@@ -1,5 +1,4 @@
-import CardComponent from './ReviewsCard';
-import CardDeck from 'react-bootstrap/card';
+import CardComponent from '../ReviewsCard';
 
 function ReviewsCardContainer(props) {
     return (

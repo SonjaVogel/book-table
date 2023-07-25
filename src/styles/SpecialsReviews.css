@@ -1,3 +1,5 @@
+/* Applies to Specials section only */
+
 .specials {
     padding: 150px 0 100px 0;
 }
@@ -6,15 +8,44 @@
     grid-column: 2/4;
     display: flex;
     justify-content: space-between;
+    align-items: end;
+    margin-bottom: 1em;
+}
+
+.specials h2 {
+    margin: 0;
 }
 
 .mobile {
     display: none;
 }
 
+/* Applies to Reviews section only */
+
+.reviews {
+    background: var(--primary-green);
+}
+
+.reviews-title {
+    grid-column: 2/4;
+    color: var(--primary-yellow);
+    justify-self: center;
+    margin-bottom: 0.75em;
+}
+
+@media screen and (max-width: 700px) {
+    .reviews-title {
+        font-size: 34px;
+    }
+
+}
+
+/* Applies to all cards both in Specials and Reviews section */
+
 .scrollable-cards-container {
     grid-column: 2/4;
     overflow-x: auto;
+    width: calc(100% + 6px);
 }
 
 .card {
@@ -42,23 +73,22 @@
     background: var(--highlight-lgrey);
 }
 
-.specials p {
-    color: #6E6F6E;
-}
-
-.specials a {
-    color: black;
-    text-decoration: none;
-}
-
 @media screen and (max-width: 900px) {
+
+    /* Applies to all cards both in Specials and Reviews section */
 
     .scrollable-cards-container {
         margin-right: -24px;
+        margin-left: -24px;
+        width: auto;
     }
 
     .card:last-child {
         padding-right: 24px;
+    }
+
+    .card:first-child {
+        padding-left: 24px;
     }
 }
 
@@ -82,43 +112,3 @@
     }
 
 }
-
-/* 
-  .specials-container::after {
-    content: "";
-    position: absolute;
-    height: 300px;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 50px;
-    pointer-events: none;
-    background-image: linear-gradient(to right, rgba(255,255,255,0), white);
-  } */
-
-  /* .specials-container.show-blur::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 50px;
-    pointer-events: none;
-    background-image: linear-gradient(to right, rgba(255,255,255,0), white);
-  } */
-
-/* .specials-container::after {
-    content: '';
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 60px;
-  height: calc(100% - 20px);
-  right: 0;
-  position: absolute;
-  z-index: 9999999;
-  margin-left: auto;
-  top: 0;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .7) 40%, #fff 70%);
-}
- */

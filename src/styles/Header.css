@@ -34,7 +34,6 @@
 
 .nav-elements a {
   position: relative;
-  text-decoration: none;
 }
 
 .nav-elements a::before {
