@@ -1,6 +1,4 @@
 import React from "react";
-import ReactDatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import { Formik, Form, Field} from "formik";
 import * as Yup from "yup";
 import { Button, Input, Box, Select, SimpleGrid } from "@chakra-ui/react";
@@ -8,11 +6,13 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import { useFormikContext } from "formik";
 import { submitForm } from './Main';
 
+const today = new Date();
+
 const validationSchema = Yup.object().shape({
     people: Yup.number().min(1, "At least one person is required").max(8, "Maximum 8 people are allowed").required("Number of people is required"),
     date: Yup.date()
         .transform((_, originalValue) => new Date(originalValue))
-        .min(new Date().setHours(0,0,0,0), "Date must be in the future")
+        .min(today - 86400000, "Date must be in the future")
         .required("Date is required"),
     time: Yup.string().required("Time is required"),
     occasion: Yup.string().oneOf(["birthday", "engagement", "anniversary"], "Invalid occasion"),
@@ -24,7 +24,7 @@ const validationSchema = Yup.object().shape({
 
 const initialValues = {
     people: "",
-    date: "",
+    date: today.toISOString().slice(0, 10),
     time: "",
     occasion: "",
     location: "",
@@ -72,21 +72,6 @@ const CustomInput = ({ name, ...props}) => {
     return (
         <Input
             {...getCustomInputSelectAttributes(name, touched, errors, props)}
-        />
-    );
-};
-
-const CustomDatePicker = ({ name, placeholder, ...props }) => {
-    const { setFieldValue, setFieldTouched, values } = useFormikContext();
-    return (
-        <ReactDatePicker
-            {...props}
-            selected={values[name]}
-            onChange={(date) => {
-                setFieldValue(name, date);
-                setFieldTouched(name, true);
-            }}
-            placeholderText={placeholder}
         />
     );
 };
@@ -164,7 +149,7 @@ export default function BookingForm(props) {
             onSubmit={(values) => {
                 const formData = {
                     people: values.people,
-                    date: date.toISOString().slice(0, 10),
+                    date: values.date,
                     time: values.time,
                     occasion: values.occasion,
                     location: values.location,
@@ -221,8 +206,6 @@ export default function BookingForm(props) {
                             <br/>
                             {errors.date && touched.date && <span id="date-error" className="error-message" role="alert" >{errors.date}</span>}
                         </Box>
-
-
                         <CustomBox
                             icon="clock"
                             name="time"
