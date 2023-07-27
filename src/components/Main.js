@@ -1,40 +1,31 @@
 import Homepage from './Homepage';
 import BookingPage from './BookingPage';
 import ConfirmedBooking from './ConfirmedBooking';
-import { Routes, Route, useNavigate } from "react-router-dom";
-import React, { useState, useReducer, useEffect } from "react";
-import { fetchAPI, submitAPI } from '../api.js';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import React, { useState, useReducer, useEffect } from 'react';
 
-export const updateTimesbackup = (state, action) => {
-  switch (action.type) {
-    case "changeDate":
-      return new Promise((resolve, reject) => {
-        fetchAPI(action.payload, function(times) {
-          resolve(times);
-        });
-      });
-    default:
-      throw new Error("Invalid action type");
-  }
-}
+import { updateTimes } from '../utils/formUtils';
 
-export const updateTimes = (state, action) => {
-  switch (action.type) {
-    case "changeDate":
-      return fetchAPI(action.payload);
-    default:
-      throw new Error("Invalid action type");
-  }
-}
+// import { fetchAPI, submitAPI } from '../api.js';
 
-export const submitForm = (formData, navigate) => {
-  console.log("Form data:", formData);
-  const response = submitAPI(formData);
-  console.log("Response:", response);
-  if (response) {
-    navigate("/reservation-confirmation");
-  }
-}
+
+// export const updateTimes = (state, action) => {
+//   switch (action.type) {
+//     case "changeDate":
+//       return fetchAPI(action.payload);
+//     default:
+//       throw new Error("Invalid action type");
+//   }
+// }
+
+// export const submitForm = (formData, navigate) => {
+//   console.log("Form data:", formData);
+//   const response = submitAPI(formData);
+//   console.log("Response:", response);
+//   if (response) {
+//     navigate("/reservation-confirmation");
+//   }
+// }
 
 function Main() {
   const [date, setDate] = useState(new Date());
@@ -42,7 +33,7 @@ function Main() {
 
   useEffect(() => {
     dispatch({type: "changeDate", payload: new Date()});
-  }, []); // Pass an empty array as second parameter to run effect only once
+  }, []); // Empty array as second parameter to run effect only once
 
   const navigate = useNavigate();
 

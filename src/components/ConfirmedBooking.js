@@ -1,11 +1,32 @@
 import '../styles/BookingPage.css';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useBackListener } from '../hooks/useBackListener';
+import { formatDate } from '../utils/utils';
+import { useScrollToTop } from '../hooks/useScrollToTop';
 
-function ConfirmedBooking() {
+function ConfirmedBooking( ) {
+
+    useScrollToTop();
+
+    const navigate = useNavigate();
+    useBackListener(() => navigate('/reserve-table', { replace: true }));
+    const location = useLocation();
+    const { date, time } = location.state || {};
+
+    if (!date || !time) {
+        return null;
+      }
+
+    const dateString = formatDate(date);
 
     return(
-        <section className="grid booking-page">
-            <div className="confirmed-booking-header grid">
-                <h1 className="booking-title">Thank you for your reservation!</h1>
+        <section className="confirmed booking-page grid">
+            <div className="confirmed booking-header">
+                <h1 className="confirmed booking-title">Thank you for your reservation!</h1>
+                <div>
+                    <h2>See you {dateString} at {time}!</h2>
+                    <img className="confirmed" src="little lemon restaurant chef.jpg" width="393px" height="395px" />
+                </div>
             </div>
         </section>
     )

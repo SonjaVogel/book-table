@@ -1,7 +1,6 @@
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { BrowserRouter } from "react-router-dom";
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 // Test if the form is submitted with correct data when clicking on the submit button
 test("should submit the form with correct data when clicking on the submit button", () => {

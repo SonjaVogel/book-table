@@ -13,12 +13,13 @@ function About() {
                 <h2 className="section-title">
                     About Little Lemon
                 </h2>
-                <p>{longAbout[0]}</p>
-                <p>{longAbout[1]}</p>
+                {longAbout.map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                ))}
             </div>
             <div className="about-item">
-                <img src="Mario+Adrian B.jpg"/>
-                <img src="Mario+Adrian A.jpg"/>
+                <img src="Mario+Adrian B.jpg" alt="Little Lemon Founders" />
+                <img src="Mario+Adrian A.jpg" alt="Little Lemon Founders" />
             </div>
         </section>
     )

@@ -1,10 +1,10 @@
-import React from "react";
-import { Formik, Form, Field} from "formik";
-import * as Yup from "yup";
-import { Button, Input, Box, Select, SimpleGrid } from "@chakra-ui/react";
 import '@fortawesome/fontawesome-free/css/all.css';
-import { useFormikContext } from "formik";
-import { submitForm } from './Main';
+import React from 'react';
+import * as Yup from 'yup';
+import { Formik, Form, Field, useFormikContext } from 'formik';
+import { keyframes, Button, Input, Box, Select, SimpleGrid } from '@chakra-ui/react';
+import { submitForm } from '../utils/formUtils';
+// import { submitForm } from './Main';
 
 const today = new Date();
 
@@ -48,15 +48,24 @@ const CustomIcon = ({ name, icon, ...props }) => {
     );
 };
 
+const shake = keyframes`
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+`;
+
 const getCustomInputSelectAttributes = (name, touched, errors, props) => ({
     width: "340px",
     ...props,
     name,
-    bg: touched[name] && !errors[name] ? "var(--primary-green)" : "#EDEFEE",
+    bg: touched[name] && !errors[name] ? "var(--primary-green)" : "var(--highlight-lgrey)",
     color: touched[name] && !errors[name] ? "var(--highlight-lgrey)" : "black",
-    textColor: touched[name] && !errors[name] ? "var(--highlight-lgrey)" : "black"
+    textColor: touched[name] && !errors[name] ? "var(--highlight-lgrey)" : "black",
+    _hover: touched[name] && !errors[name] ? {bg: "#3a4a45"} : {bg: "rgba(237, 239, 238, 0.5)"},
+    animation: touched[name] && errors[name] ? `${shake} 0.5s ease-in-out` : 'none',
+    transition: "all 0.3s ease-in-out",
 });
-
 
 const CustomSelect = ({ name, ...props}) => {
     const { touched, errors } = useFormikContext();
@@ -159,6 +168,9 @@ export default function BookingForm(props) {
                 };
                 console.log("Form data:", formData);
                 submitForm(formData, navigate);
+                navigate("/reservation-confirmation", {
+                    state: { date: values.date, time: values.time }
+                });
             }}
             validateOnChange={true}
         >

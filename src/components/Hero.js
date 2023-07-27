@@ -20,7 +20,7 @@ function Hero() {
                 </div>
             </div>
             <div className="hero-item">
-                <img src="heroimage.jpg" />
+                <img src="heroimage.jpg" alt="Little Lemon's bruschetta assortment" />
             </div>
         </section>
     )

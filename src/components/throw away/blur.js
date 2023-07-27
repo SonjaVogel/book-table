@@ -1,4 +1,4 @@
-export function addBlurEffect(selector) {
+/* export function addBlurEffect(selector) {
 const el = document.querySelector(selector);
 const containerEl = el.querySelector('.specials');
 
@@ -13,4 +13,4 @@ function updateBlur() {
 updateBlur();
 el.addEventListener('scroll', updateBlur);
 window.addEventListener('resize', updateBlur);
-}
+} */

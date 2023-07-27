@@ -8,13 +8,8 @@ const Header = () => {
     const [showNavbar, setShowNavbar] = useState(false)
 
     const handleShowNavbar = () => {
-        if (!showNavbar) {
-            setShowNavbar(true);
-        } else {
-            setShowNavbar(false);
-            setTimeout(() => setShowNavbar(false), 10);
-        }
-}
+        setShowNavbar((prevShowNavbar) => !prevShowNavbar);
+      };
 
     return (
         <nav className="navbar grid">

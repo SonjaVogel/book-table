@@ -1,7 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import Rating from 'react-rating';
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function ReviewsCard(props) {
     return(
