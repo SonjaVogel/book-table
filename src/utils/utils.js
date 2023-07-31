@@ -3,5 +3,5 @@ export const formatDate = (date) => {
     const month = date.toLocaleDateString('en-US', { month: 'long' });
     const day = date.toLocaleDateString('en-US', { day: 'numeric' });
 
-    return `${weekday} ${month} ${day}th`;
+    return `${weekday} ${month} ${day}`;
   };

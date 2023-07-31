@@ -69,7 +69,6 @@
 
 .card-body {
     padding: 24px;
-    gap: 12px;
     background: var(--highlight-lgrey);
 }
 

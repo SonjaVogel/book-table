@@ -36,7 +36,7 @@
 
     .hero {
         display: block;
-        height: 480px;
+        height: 470px;
         width: auto;
         padding: 24px 24px 12px 24px;
         margin-bottom: 35px;
@@ -56,8 +56,9 @@
     }
 
     .hero p {
-        padding-top: 235px;
+        padding-top: 248px;
         width: calc(100vw - 48px);
+        margin-bottom: 24px;
     }
 
     .hero p, .hero button {

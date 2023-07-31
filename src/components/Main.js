@@ -1,31 +1,10 @@
 import Homepage from './Homepage';
 import BookingPage from './BookingPage';
 import ConfirmedBooking from './ConfirmedBooking';
+import PageOutOfScope from './PageOutOfScope';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import React, { useState, useReducer, useEffect } from 'react';
-
 import { updateTimes } from '../utils/formUtils';
-
-// import { fetchAPI, submitAPI } from '../api.js';
-
-
-// export const updateTimes = (state, action) => {
-//   switch (action.type) {
-//     case "changeDate":
-//       return fetchAPI(action.payload);
-//     default:
-//       throw new Error("Invalid action type");
-//   }
-// }
-
-// export const submitForm = (formData, navigate) => {
-//   console.log("Form data:", formData);
-//   const response = submitAPI(formData);
-//   console.log("Response:", response);
-//   if (response) {
-//     navigate("/reservation-confirmation");
-//   }
-// }
 
 function Main() {
   const [date, setDate] = useState(new Date());
@@ -53,6 +32,7 @@ function Main() {
             }
         />
         <Route path="/reservation-confirmation" element={<ConfirmedBooking />} />
+        <Route path="/out-of-scope" element={<PageOutOfScope />} />
       </Routes>
     </main>
   )

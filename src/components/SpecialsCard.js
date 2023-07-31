@@ -1,10 +1,17 @@
 import Card from 'react-bootstrap/Card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBicycle } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 function SpecialsCard(props) {
+    const navigate = useNavigate();
+
+    function handleLinkClick() {
+        navigate(props.link);
+    }
+
     return(
-        <Card 
+        <Card
             style={{
                 width: "264px",
                 }} >
@@ -46,7 +53,7 @@ function SpecialsCard(props) {
                 </div>
                 <div>
                     <Card.Link
-                        href={props.link}
+                        onClick={handleLinkClick}
                         className="CTA-lead-text"
                         style={{
                             color: "black",

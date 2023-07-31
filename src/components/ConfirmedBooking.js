@@ -17,7 +17,8 @@ function ConfirmedBooking( ) {
         return null;
       }
 
-    const dateString = formatDate(date);
+      const dateObject = new Date(date);
+      const dateString = formatDate(dateObject);
 
     return(
         <section className="confirmed booking-page grid">

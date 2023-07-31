@@ -39,20 +39,8 @@
 /* Styles overwritten specifically foor ConfirmedBooking */
 
 .confirmed.booking-page::before {
-    height: 400px;
     height: 70%;
 }
-
-/* .booking-page::after {
-    content: "";
-    position: absolute;
-    top: 70%;
-    left: 0;
-    width: 100%;
-    height: 30%;
-    background-color: var(--highlight-lgrey);
-    z-index: -1;
-  } */
 
 .confirmed.booking-header {
     flex-direction: column;
@@ -181,11 +169,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         margin-top: 0;
     }
 
-    /* .confirmed.booking-page img {
-        width: 60%;
-        height: 60%;
-    } */
-
     .confirmed h1 {
         font-size: 52px;
     }
@@ -213,26 +196,46 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 @media screen and (max-width: 470px) {
     .booking-title {
-        font-size: 52px;    }
+        font-size: 52px;
+    }
 
     .confirmed h2 {
         font-size: 28px;
     }
 }
 
-@media screen and (max-width: 400px) {
-    .booking-title {
-        font-size: 52px;    }
-
-    .confirmed h1 {
-        font-size: 38px;
-    }
+@media screen and (max-width: 430px) {
 
     .confirmed h2 {
         font-size: 24px;
     }
 
-    /* .confirmed.booking-page::before {
-        height: 325px;
-    } */
+    .confirmed.booking-page div {
+        flex-direction: column;
+    }
+
+    .confirmed.booking-title {
+        margin: 1em 0 0.25em 0;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+
+    .confirmed h1 {
+        font-size: 38px;
+    }
+
+}
+
+@media screen and (max-width: 300px) {
+
+    .confirmed h1 {
+        font-size: 32px;
+    }
+
+    .confirmed h2 {
+        font-size: 20px;
+    }
+
 }

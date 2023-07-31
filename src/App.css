@@ -125,6 +125,34 @@ button:hover {
   color: white;
 }
 
+.out-scope a {
+  position: relative;
+  color: white;
+  z-index: 1;
+}
+
+.out-scope a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  z-index: -1;
+}
+
+.out-scope a:hover {
+  color: var(--primary-green);
+}
+
+.out-scope a:hover::before {
+  opacity: 1;
+}
+
+
 @media screen and (max-width: 765px) {
   .grid {
     padding: 75px 0;
