@@ -196,9 +196,6 @@ button:hover {
 }
 
 @media screen and (max-width: 380px) {
-  /* .grid {
-    grid-template-columns: 1fr auto 1fr;
-  } */
 
   .section-title {
     font-size: calc(var(--h2-size) * 0.7);

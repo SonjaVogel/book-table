@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 const shortAbout = "We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.";
 
 function Hero() {
+
     return(
         <section className="hero grid">
             <div className="hero-item">
@@ -24,6 +25,7 @@ function Hero() {
             </div>
         </section>
     )
+
 }
 
 export default Hero;
