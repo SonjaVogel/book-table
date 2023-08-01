@@ -21,6 +21,7 @@ html, body, main {
 
   /* Other */
   --form-field-width: 340px;
+  --top-padding-hero-text: 220px;
 }
 
 .grid {

@@ -50,7 +50,7 @@
     }
 
     .hero p {
-        padding-top: 225px;
+        padding-top: var(--top-padding-hero-text);
         width: calc(100vw - 48px);
         margin-bottom: 20px;
     }
@@ -66,18 +66,18 @@
 
 @media screen and (max-width: 765px) {
     .hero p {
-        padding-top: calc(225px + (var(--h1-size) + var(--h2-size)) * 0.2);
+        padding-top: calc(var(--top-padding-hero-text) + (var(--h1-size) + var(--h2-size)) * 0.2);
     }
 }
 
 @media screen and (max-width: 400px) {
     .hero p {
-        padding-top: calc(225px + (var(--h1-size) + var(--h2-size)) * 0.4);
+        padding-top: calc(var(--top-padding-hero-text) + (var(--h1-size) + var(--h2-size)) * 0.4);
     }
 }
 
 @media screen and (max-width: 324px) {
     .hero p {
-        padding-top: calc(225px + (var(--h1-size) + var(--h2-size)) * 0.4 - 20px);
+        padding-top: calc(var(--top-padding-hero-text) + (var(--h1-size) + var(--h2-size)) * 0.4 - 20px);
     }
 }
