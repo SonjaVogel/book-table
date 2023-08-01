@@ -31,11 +31,21 @@
     color: var(--primary-yellow);
     justify-self: center;
     margin-bottom: 0.75em;
+    font-size: var(--h2-size);
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 460px) {
+
     .reviews-title {
-        font-size: 34px;
+        font-size: calc(var(--h2-size) * 0.8);
+    }
+
+}
+
+@media screen and (max-width: 375px) {
+
+    .reviews-title {
+        font-size: calc(var(--h2-size) * 0.6);
     }
 
 }

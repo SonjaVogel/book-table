@@ -36,8 +36,6 @@ function Specials() {
         navigate('/out-of-scope');
     }
 
-    
-
     return(
         <section className="specials grid">
             <div className="specials-header">

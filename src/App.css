@@ -4,12 +4,23 @@ html, body, main {
 }
 
 :root {
+  /* Colors */
   --primary-green: #495E57;
   --primary-yellow: #F4CE14;
   --secondary-dpeach: #EE9972;
   --secondary-lpeach: #FBDABB;
   --highlight-lgrey: #edefee;
   --highlight-dgrey: #333333;
+
+  /* Font sizes */
+  --h1-size: 64px;
+  --h2-size: 40px;
+  --h3-size: 18px;
+  --CTA-size: 18px;
+  --p-size: 16px;
+
+  /* Other */
+  --form-field-width: 340px;
 }
 
 .grid {
@@ -33,7 +44,7 @@ a, a::after {
 h1 {
   font-family: 'Markazi Text';
   font-weight: 500;
-  font-size: 64px;
+  font-size: var(--h1-size);
   color: var(--primary-yellow);
   margin: 0;
   padding: 0;
@@ -43,7 +54,7 @@ h2 {
   font-family: 'Markazi Text';
   font-style: normal;
   font-weight: 400;
-  font-size: 40px;
+  font-size: var(--h2-size);
   color: var(--primary-green);
   margin: 0;
   padding: 0;
@@ -52,6 +63,7 @@ h2 {
 .section-title {
   position: relative;
   width: max-content;
+  font-size: var(--h2-size);
 }
 
 .section-title::before {
@@ -71,7 +83,7 @@ h3 {
   font-family: 'Karla';
   font-style: normal;
   font-weight: 700;
-  font-size: 18px;
+  font-size: var(--h3-size);
   line-height: 22px;
   color: black;
 }
@@ -79,14 +91,14 @@ h3 {
 p {
   font-family: 'Karla';
   font-style: normal;
-  font-size: 16px;
+  font-size: var(--p-size);
   line-height: 20px;
   color: var(--highlight-dgrey);
 }
 
 .CTA-lead-text {
   font-family: 'Karla';
-  font-size: 18px;
+  font-size: var(--CTA-size);
   line-height: 22px;
 }
 
@@ -94,7 +106,7 @@ p {
   font-family: 'Karla';
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
+  font-size: var(--p-size);
   line-height: 20px;
   color: var(--secondary-dpeach);
 }
@@ -113,7 +125,7 @@ button {
   font-family: 'Karla';
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
+  font-size: var(--CTA-size);
   color: black;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
@@ -157,5 +169,45 @@ button:hover {
   .grid {
     padding: 75px 0;
   }
+
+  h1 {
+    font-size: calc(var(--h1-size) * 0.8);
+  }
+
+  h2 {
+    font-size: calc(var(--h2-size) * 0.8);
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+
+  h1 {
+      font-size: calc(var(--h1-size) * 0.6);
+  }
+
+  h2 {
+    font-size: calc(var(--h2-size) * 0.6);
+  }
+
+  .CTA-lead-text {
+    font-size: calc(var(--CTA-size) * 0.9);
+  }
+}
+
+@media screen and (max-width: 380px) {
+  /* .grid {
+    grid-template-columns: 1fr auto 1fr;
+  } */
+
+  .section-title {
+    font-size: calc(var(--h2-size) * 0.7);
+  }
+
+  .section-title::before {
+    height: calc(28px * 0.7);
+    top: calc(19.5px * 0.7);
+  }
+
 }
 

@@ -23,7 +23,6 @@
 
   .hero h2 {
     color: white;
-    margin-top: -10px;
   }
 
   .hero p {
@@ -32,7 +31,7 @@
     max-width: 420px;
   }
 
-  @media screen and (max-width: 825px) {
+  @media screen and (max-width: 835px) {
 
     .hero {
         display: block;
@@ -46,19 +45,14 @@
         object-fit: cover;
     }
 
-    .hero-item:first-child {
-        min-width: calc(320px - 48px);
-        max-width: calc(100vw - 48px);
-    }
-
     .hero img {
         display: none;
     }
 
     .hero p {
-        padding-top: 248px;
+        padding-top: 225px;
         width: calc(100vw - 48px);
-        margin-bottom: 24px;
+        margin-bottom: 20px;
     }
 
     .hero p, .hero button {
@@ -67,14 +61,23 @@
 
     .hero h1, .hero h2 {
         text-align: right;
-        text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    }
-
-    .hero h1 {
-        font-size: 50px;
-    }
-
-    .hero h2 {
-        font-size: 30px;
     }
   }
+
+@media screen and (max-width: 765px) {
+    .hero p {
+        padding-top: calc(225px + (var(--h1-size) + var(--h2-size)) * 0.2);
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .hero p {
+        padding-top: calc(225px + (var(--h1-size) + var(--h2-size)) * 0.4);
+    }
+}
+
+@media screen and (max-width: 324px) {
+    .hero p {
+        padding-top: calc(225px + (var(--h1-size) + var(--h2-size)) * 0.4 - 20px);
+    }
+}

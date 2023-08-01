@@ -2,9 +2,8 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import React from 'react';
 import * as Yup from 'yup';
 import { Formik, Form, Field, useFormikContext } from 'formik';
-import { keyframes, Button, Input, Box, Select, SimpleGrid } from '@chakra-ui/react';
+import { keyframes, Button, Input, Box, Select, SimpleGrid, useMediaQuery } from '@chakra-ui/react';
 import { submitForm } from '../utils/formUtils';
-// import { submitForm } from './Main';
 
 const today = new Date();
 
@@ -56,7 +55,6 @@ const shake = keyframes`
 `;
 
 const getCustomInputSelectAttributes = (name, touched, errors, props) => ({
-    width: "340px",
     ...props,
     name,
     bg: touched[name] && !errors[name] ? "var(--primary-green)" : "var(--highlight-lgrey)",
@@ -144,7 +142,10 @@ const CustomBox = ({ icon, name, type, placeholder, options, onChange, children 
 
 export default function BookingForm(props) {
 
-    const {availableTimes, dispatch, date, setDate, navigate} = props;
+    const {availableTimes, date, setDate, navigate} = props;
+
+    const [isLargerThan768] = useMediaQuery('(min-width: 768px)');
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
     function handleDateChange(event) {
         let newDate = new Date(event.target.value);
@@ -176,9 +177,9 @@ export default function BookingForm(props) {
         >
 
             {({ errors, touched })=> (
-                <Form method="post">
+                <Form method="post" style={{ width: `calc(100% - ${scrollbarWidth}px)` }}>
                     <SimpleGrid
-                        minChildWidth='340px'
+                        minChildWidth={isLargerThan768 ? '340px' : '100%'}
                         spacing='24px'
                         className='chakra-simple-grid' // Needed for centering form fields on real mobile, not visible in dev-tools
                     >
@@ -266,7 +267,6 @@ export default function BookingForm(props) {
                         />
                         <Button
                             type="submit"
-                            width="340px"
                             style={{marginTop: "48px"}}
                             data-testid="reserve-button"
                         >
