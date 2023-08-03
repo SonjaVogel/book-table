@@ -21,7 +21,7 @@ function Hero() {
                 </div>
             </div>
             <div className="hero-item">
-                <img src="heroimage.jpg" alt="Little Lemon's bruschetta assortment" />
+                <img src={`${process.env.PUBLIC_URL}/heroimage.jpg`} alt="Little Lemon's bruschetta assortment" />
             </div>
         </section>
     )

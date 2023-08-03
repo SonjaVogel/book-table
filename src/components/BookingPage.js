@@ -11,7 +11,7 @@ function BookingPage(props) {
         <section className="booking-page grid form">
             <div className="booking-header">
                 <h1 className="booking-title">Reserve a Table</h1>
-                <img src="restaurant-interior.jpg" width="337px" height="225px"
+                <img src={`${process.env.PUBLIC_URL}/restaurant-interior.jpg`} width="337px" height="225px"
                     style={{marginTop: "48px"}} />
             </div>
             <div className="booking-form">

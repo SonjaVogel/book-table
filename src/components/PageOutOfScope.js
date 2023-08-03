@@ -10,7 +10,11 @@ function PageOutOfScope() {
                 <h1 className="confirmed booking-title">This page is out of scope for this portfolio project.</h1>
                 <div>
                     <h2>Please visit the <a href="/">homepage</a> or <a href="/reserve-table">reserve a table page</a> instead.</h2>
-                    <img className="confirmed" src="little lemon restaurant chef.jpg" width="393px" height="395px" />
+                    <img className="confirmed"
+                        src={`${process.env.PUBLIC_URL}/little lemon restaurant chef.jpg`}
+                        width="393px"
+                        height="395px" 
+                    />
                 </div>
             </div>
         </section>

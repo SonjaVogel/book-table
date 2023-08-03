@@ -26,7 +26,11 @@ function ConfirmedBooking( ) {
                 <h1 className="confirmed booking-title">Thank you for your reservation!</h1>
                 <div>
                     <h2>See you {dateString} at {time}!</h2>
-                    <img className="confirmed" src="little lemon restaurant chef.jpg" width="393px" height="395px" />
+                    <img className="confirmed"
+                        src={`${process.env.PUBLIC_URL}/little lemon restaurant chef.jpg`}
+                        width="393px"
+                        height="395px" 
+                    />
                 </div>
             </div>
         </section>

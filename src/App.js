@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/portfolio/little-lemon">
         <Header />
         <Main />
         <Footer />

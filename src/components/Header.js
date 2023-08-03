@@ -16,7 +16,7 @@ const Header = () => {
             <div className="header-container">
                 <div className="logo">
                     <NavLink to="/">
-                        <img src="Little Lemon Logo1.png" alt="Little Lemon Logo"/>
+                        <img src={`${process.env.PUBLIC_URL}/Little Lemon Logo1.png`} alt="Little Lemon Logo"/>
                     </NavLink>
                 </div>
                 <div className="menu-icon" onClick={handleShowNavbar}>

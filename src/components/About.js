@@ -18,8 +18,8 @@ function About() {
                 ))}
             </div>
             <div className="about-item">
-                <img src="Mario+Adrian B.jpg" alt="Little Lemon Founders" />
-                <img src="Mario+Adrian A.jpg" alt="Little Lemon Founders" />
+                <img src={`${process.env.PUBLIC_URL}/Mario+Adrian B.jpg`} alt="Little Lemon Founders" />
+                <img src={`${process.env.PUBLIC_URL}/Mario+Adrian A.jpg`}  alt="Little Lemon Founders" />
             </div>
         </section>
     )

@@ -6,21 +6,21 @@ import { useNavigate } from 'react-router-dom';
 
 const specials = [
     {
-        img: 'greek salad.jpg',
+        img: `${process.env.PUBLIC_URL}/greek salad.jpg`,
         title: 'Greek Salad',
         price: '$12.99',
         text: 'The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons. ',
         link: '/out-of-scope'
     },
     {
-        img: 'bruschetta.jpg',
+        img: `${process.env.PUBLIC_URL}/bruschetta.jpg`,
         title: 'Bruschetta',
         price: '$5.99',
         text: 'Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil. ',
         link: '/out-of-scope'
     },
     {
-        img: 'lemon dessert.jpg',
+        img: `${process.env.PUBLIC_URL}/lemon dessert.jpg`,
         title: 'Lemon Dessert',
         price: '$5.99',
         text: 'This comes straight from grandma’s recipe book, every last ingredient has been sourced and is as authentic as can be imagined.',
