@@ -8,7 +8,7 @@
     grid-column: 2/4;
     display: flex;
     justify-content: space-between;
-    align-items: end;
+    align-items: flex-end;
     margin-bottom: 1em;
 }
 

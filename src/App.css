@@ -114,6 +114,7 @@ p {
 
 .error-message {
   color: red;
+  margin: 6px 0 -12px 16px;
 }
 
 button {

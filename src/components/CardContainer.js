@@ -24,6 +24,8 @@ function CardContainer(props) {
                             rating={card.rating}
                             text={card.text} />
                     );
+                } else {
+                    return null;
                 }
             })}
         </div>

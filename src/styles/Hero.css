@@ -11,7 +11,7 @@
 
 .hero-item:nth-child(2) {
     grid-column: 3/4;
-    justify-self: end;
+    justify-self: flex-end;
 }
 
 .hero-item img {

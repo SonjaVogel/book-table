@@ -28,6 +28,7 @@ function ConfirmedBooking( ) {
                     <h2>See you {dateString} at {time}!</h2>
                     <img className="confirmed"
                         src={`${process.env.PUBLIC_URL}/little lemon restaurant chef.jpg`}
+                        alt="Little Lemon Restaurant chef"
                         width="393px"
                         height="395px" 
                     />

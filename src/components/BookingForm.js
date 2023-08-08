@@ -1,8 +1,25 @@
 import '@fortawesome/fontawesome-free/css/all.css';
 import React from 'react';
 import * as Yup from 'yup';
-import { Formik, Form, Field, useFormikContext } from 'formik';
-import { keyframes, Button, Input, Box, Select, SimpleGrid, useMediaQuery } from '@chakra-ui/react';
+import {
+    Formik,
+    Form,
+    Field,
+    useFormikContext
+    } from 'formik';
+import {
+    keyframes,
+    Button,
+    Input,
+    Box,
+    Select,
+    SimpleGrid,
+    useMediaQuery,
+    InputGroup,
+    InputLeftElement,
+    } from '@chakra-ui/react';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { submitForm } from '../utils/formUtils';
 
 const today = new Date();
@@ -40,7 +57,7 @@ const CustomIcon = ({ name, icon, ...props }) => {
             className={"fas fa-xl fa-" + icon}
             aria-hidden="true"
             style={{
-                color: touched[name] && !errors[name] ? "var(--highlight-lgrey)" : ("#000000"),
+                color: touched[name] && !errors[name] ? "white" : "black",
             }}
         >
         </i>
@@ -58,8 +75,8 @@ const getCustomInputSelectAttributes = (name, touched, errors, props) => ({
     ...props,
     name,
     bg: touched[name] && !errors[name] ? "var(--primary-green)" : "var(--highlight-lgrey)",
-    color: touched[name] && !errors[name] ? "var(--highlight-lgrey)" : "black",
-    textColor: touched[name] && !errors[name] ? "var(--highlight-lgrey)" : "black",
+    color: touched[name] && !errors[name] ? "white" : "black",
+    textColor: touched[name] && !errors[name] ? "white" : "black",
     _hover: touched[name] && !errors[name] ? {bg: "#3a4a45"} : {bg: "rgba(237, 239, 238, 0.5)"},
     animation: touched[name] && errors[name] ? `${shake} 0.5s ease-in-out` : 'none',
     transition: "all 0.3s ease-in-out",
@@ -79,62 +96,59 @@ const CustomInput = ({ name, ...props}) => {
     return (
         <Input
             {...getCustomInputSelectAttributes(name, touched, errors, props)}
+            _placeholder={{ color: touched[name] && !errors[name] ? "white" : "#6E6F6E" }}
         />
     );
 };
 
-const CustomBox = ({ icon, name, type, placeholder, options, onChange, children }) => {
+const CustomBox = ({ icon, name, type, placeholder, options, onChange }) => {
     const { errors, touched } = useFormikContext();
     return (
-        <Box height="60px">
-            {icon && (type === "date" || "text" ? (
-                <div className="icon-text-calendar">
-                    <CustomIcon icon={icon} name={name} />
-                </div>
-            ) : (
-                <CustomIcon icon={icon} name={name} />
-            ))}
-            <Field name={name}>
-                {({ field, form }) => (
-                    type === "select" ? (
-                        <CustomSelect
-                            {...field}
-                            placeholder={placeholder}
-                            aria-label={placeholder}
-                            aria-errormessage={`${name}-error`}
-                            aria-invalid={errors[name] || touched[name]}
-                            onChange={(e) => {
-                                form.setFieldTouched(name);
-                                form.handleChange(e);
-                                if (onChange) onChange(e);
-                            }}
-                        >
-                            {options && options.map((option) => (
-                                <option key={option.value} value={option.value}>
-                                    {option.label}
-                                </option>
-                            ))}
-                        </CustomSelect>
-                    ) : (
-                        <CustomInput
-                            {...field}
-                            type={type}
-                            placeholder={placeholder}
-                            aria-label={placeholder}
-                            aria-errormessage={`${name}-error`}
-                            aria-invalid={errors[name] || touched[name]}
-                            onChange={(e) => {
-                                form.setFieldTouched(name);
-                                form.handleChange(e);
-                                if (onChange) onChange(e);
-                            }}
-                        />
-                    )
-                )}
-            </Field>
-            {(type === "text" || type === "date" || type === "email") && <br/>}
-            {errors[name] && touched[name] && <span id={`${name}-error`} className="error-message" role="alert" >{errors[name]}</span>}
-            {children}
+        <Box className="chakra-box">
+            <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                        <CustomIcon icon={icon} name={name} />
+                </InputLeftElement>
+                <Field name={name}>
+                    {({ field, form }) => (
+                        type === "select" ? (
+                            <CustomSelect
+                                {...field}
+                                placeholder={placeholder}
+                                aria-label={placeholder}
+                                aria-errormessage={`${name}-error`}
+                                aria-invalid={errors[name] || touched[name]}
+                                onChange={(e) => {
+                                    form.setFieldTouched(name);
+                                    form.handleChange(e);
+                                    if (onChange) onChange(e);
+                                }}
+                            >
+                                {options && options.map((option) => (
+                                    <option key={option.value} value={option.value}>
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </CustomSelect>
+                        ) : (
+                            <CustomInput
+                                {...field}
+                                type={type}
+                                placeholder={placeholder}
+                                aria-label={placeholder}
+                                aria-errormessage={`${name}-error`}
+                                aria-invalid={errors[name] || touched[name]}
+                                onChange={(e) => {
+                                    form.setFieldTouched(name);
+                                    form.handleChange(e);
+                                    if (onChange) onChange(e);
+                                }}
+                            />
+                        )
+                    )}
+                </Field>
+            </InputGroup>
+            {errors[name] && touched[name] && <Box id={`${name}-error`} className="error-message" role="alert" >{errors[name]}</Box>}
         </Box>
     );
 };
@@ -146,11 +160,6 @@ export default function BookingForm(props) {
 
     const [isLargerThan768] = useMediaQuery('(min-width: 768px)');
     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-
-    function handleDateChange(event) {
-        let newDate = new Date(event.target.value);
-        setDate(newDate);
-    }
 
     return (
         <Formik
@@ -182,6 +191,7 @@ export default function BookingForm(props) {
                         minChildWidth={isLargerThan768 ? '340px' : '100%'}
                         spacing='24px'
                         className='chakra-simple-grid' // Needed for centering form fields on real mobile, not visible in dev-tools
+                        zIndex={1}
                     >
                         <CustomBox
                             icon="user-group"
@@ -191,33 +201,35 @@ export default function BookingForm(props) {
                             options={[...Array(8)].map((_, i) => ({ value: i + 1, label: i + 1 }))}
                         />
 
-                        <Box height="60px">
-                            <div className="icon-text-calendar">
-                                <CustomIcon icon="calendar-days" name="date" />
-                            </div>
-                            <Field name="date">
-                                {({ field, form }) => (
-                                    <CustomInput
-                                        type="date"
-                                        {...field}
-                                        aria-label="Date"
-                                        aria-errormessage="date-error"
-                                        aria-invalid={errors.date || touched.date}
-                                        value={date.toISOString().slice(0, 10)}
-                                        onChange={(e) => {
-                                            form.setFieldTouched("date");
-                                            field.onChange(e);
-                                            handleDateChange(e);
-                                            props.dispatch({
-                                                type: "changeDate",
-                                                payload: new Date(e.target.value)
-                                            });
-                                        }}
-                                    />
-                                )}
-                            </Field>
-                            <br/>
-                            {errors.date && touched.date && <span id="date-error" className="error-message" role="alert" >{errors.date}</span>}
+                        <Box className="chakra-box">
+                            <InputGroup zIndex={1}>
+                                <InputLeftElement pointerEvents="none">
+                                    <CustomIcon icon="calendar-days" name="date" />
+                                </InputLeftElement>
+                                    <Field name="date">
+                                        {({ field, form }) => (
+                                            <DatePicker
+                                                className={`datepicker ${touched.date ? 'touched' : ''} ${errors.date ? 'error' : 'no-error'}`}
+                                                dateFormat="d MMMM yyyy"
+                                                placeholderText="Date"
+                                                selected={date}
+                                                aria-label="Date"
+                                                aria-errormessage="date-error"
+                                                aria-invalid={errors.date || touched.date}
+                                                onChange={(date) => {
+                                                    form.setFieldTouched("date");
+                                                    form.setFieldValue("date", date);
+                                                    setDate(date);
+                                                    props.dispatch({
+                                                        type: "changeDate",
+                                                        payload: date
+                                                    });
+                                                }}
+                                        />
+                                        )}
+                                    </Field>
+                            </InputGroup>
+                            {errors.date && touched.date &&<Box id="date-error" className="error-message" role="alert" >{errors.date}</Box>}
                         </Box>
                         <CustomBox
                             icon="clock"
@@ -269,6 +281,7 @@ export default function BookingForm(props) {
                             type="submit"
                             style={{marginTop: "48px"}}
                             data-testid="reserve-button"
+                            className="reserve-table-button"
                         >
                             Reserve table
                         </Button>

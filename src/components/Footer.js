@@ -12,10 +12,10 @@ function Footer() {
                         <p>+12 345 678 9900<br/>
                         info@littlelemon.com<br/>
                         5301 S Hyde Park Blvd, Chicago, IL 60615</p>
-                        <a href="https://www.instagram.com/" target="_blank">
+                        <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
                             <img src={`${process.env.PUBLIC_URL}/instagram.png`} className="socialicon" alt="Little Lemon Instagram icon" />
                         </a>
-                        <a href="https://www.facebook.com/" target="_blank">
+                        <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">
                             <img src={`${process.env.PUBLIC_URL}/facebook.png`} className="socialicon" alt="Little Lemon Facebook icon" />
                         </a>
                 </address>
