@@ -3,6 +3,10 @@ footer {
     color: var(--primary-green);
 }
 
+footer img {
+    display: initial;
+}
+
 .footer-item:first-child {
     grid-column: 2;
 }

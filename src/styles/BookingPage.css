@@ -37,7 +37,9 @@
 }
 
 .reserve-table-button {
+    background-color: var(--primary-yellow);
     width: var(--form-field-width);
+    max-width: calc(100vw - 48px);
 }
 
 /* Styles overwritten specifically foor ConfirmedBooking */
@@ -75,17 +77,23 @@
 /* Styles for BookingForm */
 
 .chakra-input__left-element {
-    left: 16px !important;
-    top: 30px !important;
+    top: 50% !important;
+    left: 8px !important;
+    transform: translateY(-50%) !important;
 }
 
- select, input {
-    height: 60px;
+/* Chakra Select + Input, and React Datepicker  */
+Select.custom-form-field,
+Input.custom-form-field,
+.custom-form-field {
+    height: var(--form-field-height);
     width: var(--form-field-width);
+    max-width: calc(100vw - 48px);
     padding: 0 !important;
     margin: 0;
     font-family: 'Karla';
     font-size: var(--CTA-size);
+    justify-content: center !important;
     text-align: center !important;
     text-align-last: center !important;
     -moz-text-align-last: center !important;
@@ -95,58 +103,85 @@
     border: none;
     outline: none;
     border-radius: 16px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
 }
 
-.chakra-box, .chakra-input__group {
-    width: var(--form-field-width);
+Select.custom-form-field option {
+    background: var(--highlight-lgrey);
+    color: black;
 }
 
 select {
     cursor: pointer;
 }
 
+.chakra-box,
+.chakra-input__group,
 .chakra-select__wrapper {
     width: var(--form-field-width);
+    max-width: calc(100vw - 48px);
 }
 
-.chakra-select__icon-wrapper {
-    right: 10px;
-}
-
-.chakra-select__icon {
-    width: 1.25em !important;
-    height: 1.25em !important;
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus {
+.custom-form-field:-webkit-autofill,
+.custom-form-field:-webkit-autofill:hover,
+.custom-form-field:-webkit-autofill:focus {
   -webkit-text-fill-color: white;
-  -webkit-box-shadow: 0 0 0px 40rem var(--primary-green) inset;
+  -webkit-box-shadow: 0 0 0px 40rem var(--primary-green) inset !important;
 }
 
-.datepicker {
+/* .datepicker, */
+Select.custom-form-field,
+Input.custom-form-field,
+.custom-form-field {
     background-color: var(--highlight-lgrey);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     color: black;
     transition: all 0.3s ease-in-out;
-    justify-content: center !important;
+    cursor: pointer;
   }
 
-.datepicker.touched.no-error {
+/* .datepicker.touched.no-error,
+Select.custom-form-field.touched.no-error,
+Input.custom-form-field.touched.no-error */
+.custom-form-field.touched.no-error {
     background-color: var(--primary-green);
     color: white;
+    -webkit-text-fill-color: white;
 }
 
-.datepicker.error {
+.custom-form-field {
+    --icon-color: black;
+}
+.custom-form-field.touched.no-error {
+    --icon-color: white;
+}
+.custom-form-field svg {
+    color: var(--icon-color) !important;
+}
+
+
+
+
+
+
+/* .datepicker.error,
+Select.custom-form-field.error,
+Input.custom-form-field.error */
+.custom-form-field.error {
     animation: shake 0.5s ease-in-out;
 }
 
-.datepicker:hover {
-    background-color: rgba(237, 239, 238, 0.5);
+/* .datepicker:hover,
+Select.custom-form-field:hover,
+Input.custom-form-field:hover, */
+.custom-form-field.not-touched.no-error:hover {
+    background-color: rgba(237, 239, 238, 0.5) !important;
 }
 
-.datepicker.touched.no-error:hover {
+/* .datepicker.touched.no-error:hover,
+Select.custom-form-field.touched.no-error:hover,
+Input.custom-form-field.touched.no-error:hover, */
+.custom-form-field.touched.no-error:hover {
     background-color: #3a4a45;
 }
 
@@ -237,14 +272,17 @@ input:-webkit-autofill:focus {
     }
 }
 
-@media screen and (max-width: 388px) {
+/* @media screen and (max-width: 388px) {
     select,
     input,
     input[type="date"]::-webkit-calendar-picker-indicator,
+    .chakra-box,
+    .chakra-input__group,
+    .chakra-select__wrapper,
     .reserve-table-button {
         width: calc(100vw - 48px);
     }
-}
+} */
 
 @media screen and (max-width: 300px) {
 

@@ -74,12 +74,27 @@ const shake = keyframes`
 const getCustomInputSelectAttributes = (name, touched, errors, props) => ({
     ...props,
     name,
-    bg: touched[name] && !errors[name] ? "var(--primary-green)" : "var(--highlight-lgrey)",
+    // height: "var(--form-field-height)",
+    // width: "var(--form-field-width)",
+    // padding: "0",
+    // fontFamily: "Karla",
+    // fontSize: "var(--CTA-size)",
+    // border: "none",
+    // outline: "none",
+    // borderRadius: "16px",
+    // boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+    option: {
+            "&:hover": {
+                backgroundColor: "var(--highlight-dgrey)",
+            }
+        },
+    // className: `custom-form-field ${touched[name] ? 'touched' : 'not-touched'} ${errors[name] ? 'error' : 'no-error'}`
+    // bg: touched[name] && !errors[name] ? "var(--primary-green)" : "var(--highlight-lgrey)",
     color: touched[name] && !errors[name] ? "white" : "black",
-    textColor: touched[name] && !errors[name] ? "white" : "black",
-    _hover: touched[name] && !errors[name] ? {bg: "#3a4a45"} : {bg: "rgba(237, 239, 238, 0.5)"},
-    animation: touched[name] && errors[name] ? `${shake} 0.5s ease-in-out` : 'none',
-    transition: "all 0.3s ease-in-out",
+    // textColor: touched[name] && !errors[name] ? "white" : "black",
+    // _hover: touched[name] && !errors[name] ? {bg: "#3a4a45"} : {bg: "rgba(237, 239, 238, 0.5)"},
+    // animation: touched[name] && errors[name] ? `${shake} 0.5s ease-in-out` : 'none',
+    // transition: "all 0.3s ease-in-out",
 });
 
 const CustomSelect = ({ name, ...props}) => {
@@ -87,6 +102,7 @@ const CustomSelect = ({ name, ...props}) => {
     return (
         <Select
             {...getCustomInputSelectAttributes(name, touched, errors, props)}
+            className={`custom-form-field ${touched[name] ? 'touched' : 'not-touched'} ${errors[name] ? 'error' : 'no-error'}`}
         />
     );
 };
@@ -97,6 +113,7 @@ const CustomInput = ({ name, ...props}) => {
         <Input
             {...getCustomInputSelectAttributes(name, touched, errors, props)}
             _placeholder={{ color: touched[name] && !errors[name] ? "white" : "#6E6F6E" }}
+            className={`custom-form-field ${touched[name] ? 'touched' : 'not-touched'} ${errors[name] ? 'error' : 'no-error'}`}
         />
     );
 };
@@ -200,22 +217,22 @@ export default function BookingForm(props) {
                             placeholder="Number of people"
                             options={[...Array(8)].map((_, i) => ({ value: i + 1, label: i + 1 }))}
                         />
-
-                        <Box className="chakra-box">
-                            <InputGroup zIndex={1}>
+                        <Box className="chakra-box" >
+                            <InputGroup zIndex={1} >
                                 <InputLeftElement pointerEvents="none">
                                     <CustomIcon icon="calendar-days" name="date" />
                                 </InputLeftElement>
-                                    <Field name="date">
+                                    <Field name="date" >
                                         {({ field, form }) => (
                                             <DatePicker
-                                                className={`datepicker ${touched.date ? 'touched' : ''} ${errors.date ? 'error' : 'no-error'}`}
+                                                className={`custom-form-field datepicker ${touched.date ? 'touched' : ''} ${errors.date ? 'error' : 'no-error'}`}
                                                 dateFormat="d MMMM yyyy"
                                                 placeholderText="Date"
                                                 selected={date}
                                                 aria-label="Date"
                                                 aria-errormessage="date-error"
                                                 aria-invalid={errors.date || touched.date}
+                                                onFocus={(e) => e.target.blur()}
                                                 onChange={(date) => {
                                                     form.setFieldTouched("date");
                                                     form.setFieldValue("date", date);
@@ -277,14 +294,13 @@ export default function BookingForm(props) {
                             type="text"
                             placeholder="Notes"
                         />
-                        <Button
+                        <button
                             type="submit"
                             style={{marginTop: "48px"}}
-                            data-testid="reserve-button"
                             className="reserve-table-button"
                         >
                             Reserve table
-                        </Button>
+                        </button>
                     </SimpleGrid>
                 </Form>
             )}

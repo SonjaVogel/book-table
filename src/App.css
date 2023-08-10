@@ -21,6 +21,7 @@ html, body, main {
 
   /* Other */
   --form-field-width: 340px;
+  --form-field-height: 60px;
   --top-padding-hero-text: 220px;
 }
 
@@ -118,7 +119,7 @@ p {
 }
 
 button {
-  background: #F4CE14;
+  background: var(--primary-yellow);
   height: 60px;
   width: 200px;
   border: none;
