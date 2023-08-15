@@ -148,7 +148,7 @@ select {
 }
 
 .datepicker.touched.no-error:hover {
-	background-color: #3a4a45;
+	background-color: #3a4a45 !important;
 }
 
 /* Button style overwrite for datepicker */
