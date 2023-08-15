@@ -1,60 +1,59 @@
 footer {
-    background-color: var(--highlight-lgrey);
-    color: var(--primary-green);
+	background-color: var(--highlight-lgrey);
+	color: var(--primary-green);
 }
 
 footer img {
-    display: initial;
+	display: initial;
 }
 
 .footer-item:first-child {
-    grid-column: 2;
+	grid-column: 2;
 }
 
 .footer-item:nth-child(2) {
-    grid-column: 3;
-    justify-self: flex-end;
+	grid-column: 3;
+	justify-self: flex-end;
 }
 
 footer .logo {
-    height: 150px;
-    width: auto;
+	height: 150px;
+	width: auto;
+	max-width: none;
 }
 
 footer h2 {
-    font-family: 'Karla';
-    font-weight: 800;
-    font-size: 20px;
-    line-height: 0.7em;
-    text-transform: uppercase;
+	font-family: "Karla";
+	font-weight: 800;
+	font-size: 20px;
+	line-height: 0.7em;
+	text-transform: uppercase;
 }
 
 footer p {
-    color: var(--primary-green);
-    margin: 0.8em 0;
+	color: var(--primary-green);
+	margin: 0.8em 0;
 }
 
 .socialicon {
-    width: 30px;
-    margin-right: 15px;
+	width: 30px;
+	margin-right: 15px;
 }
 
 @media screen and (max-width: 320px) {
+	footer.grid {
+		grid-template-columns: 1fr auto 1fr;
+		padding: 100px 0 25px 0;
+	}
 
-    footer.grid {
-        grid-template-columns: 1fr auto 1fr;
-        padding: 100px 0 25px 0;
-    }
+	.footer-item:first-child {
+		grid-column: 2;
+		order: 2;
+		justify-self: right;
+	}
 
-    .footer-item:first-child {
-        grid-column: 2;
-        order: 2;
-        justify-self: right;
-    }
-
-    .footer-item:nth-child(2) {
-        grid-column: 2;
-        order: 1;
-    }
-
-  }
+	.footer-item:nth-child(2) {
+		grid-column: 2;
+		order: 1;
+	}
+}

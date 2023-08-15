@@ -1,297 +1,243 @@
 /* Styling for BookingPage and ConfirmedBooking */
 
 .booking-page {
-    position: relative;
-    padding: 0 0 100px 0;
+	position: relative;
+	padding: 0 0 100px 0;
 }
 
 .booking-page::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 225px;
-    background-color: var(--primary-green);
-    z-index: -1;
-  }
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 225px;
+	background-color: var(--primary-green);
+	z-index: -1;
+}
 
 .booking-header {
-    grid-column: 2/4;
-    display: flex;
-    justify-content: space-between;
+	grid-column: 2/4;
+	display: flex;
+	justify-content: space-between;
 }
 
 .booking-title {
-    align-self: center;
-    margin-top: -48px;
+	align-self: center;
+	margin-top: -48px;
 }
 
 .booking-page img {
-    object-fit: cover;
-    object-position: center;
+	object-fit: cover;
+	object-position: center;
 }
 
 .booking-form {
-    grid-column: 2/4;
+	grid-column: 2/4;
 }
 
 .reserve-table-button {
-    background-color: var(--primary-yellow);
-    width: var(--form-field-width);
-    max-width: calc(100vw - 48px);
+	background-color: var(--primary-yellow);
+	width: var(--form-field-width);
+	max-width: calc(100vw - 48px);
 }
 
 /* Styles overwritten specifically foor ConfirmedBooking */
 
 .confirmed.booking-page::before {
-    height: 70%;
+	height: 70%;
 }
 
 .confirmed.booking-header {
-    flex-direction: column;
+	flex-direction: column;
 }
 
 .confirmed.booking-title {
-    margin: 1em 0;
-    align-self: flex-start;
+	margin: 1em 0;
+	align-self: flex-start;
 }
 
 .confirmed.booking-page div {
-    display: flex;
-    justify-content: space-between;
-    gap: 24px;
-    margin-top: 0;
+	display: flex;
+	justify-content: space-between;
+	gap: 24px;
+	margin-top: 0;
 }
 
 .confirmed.booking-page h2 {
-    color: white;
+	color: white;
 }
 
 .confirmed.booking-page img {
-    width: 393px;
-    height: 395px;
-    margin-top: -24px;
+	width: 393px;
+	height: 395px;
+	margin-top: -24px;
 }
 
 /* Styles for BookingForm */
 
 .chakra-input__left-element {
-    top: 50% !important;
-    left: 8px !important;
-    transform: translateY(-50%) !important;
+	top: 50% !important;
+	left: 8px !important;
+	transform: translateY(-50%) !important;
 }
 
-/* Chakra Select + Input, and React Datepicker  */
+/* Form field styles */
 Select.custom-form-field,
 Input.custom-form-field,
-.custom-form-field {
-    height: var(--form-field-height);
-    width: var(--form-field-width);
-    max-width: calc(100vw - 48px);
-    padding: 0 !important;
-    margin: 0;
-    font-family: 'Karla';
-    font-size: var(--CTA-size);
-    justify-content: center !important;
-    text-align: center !important;
-    text-align-last: center !important;
-    -moz-text-align-last: center !important;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border: none;
-    outline: none;
-    border-radius: 16px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
+.datepicker {
+	height: var(--form-field-height);
+	width: var(--form-field-width);
+	max-width: calc(100vw - 48px);
+	padding: 0 !important;
+	margin: 0;
+	font-family: "Karla";
+	font-size: var(--CTA-size);
+	justify-content: center !important;
+	text-align: center !important;
+	text-align-last: center !important;
+	-moz-text-align-last: center !important;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border: none;
+	outline: none;
+	border-radius: 16px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
 }
 
 Select.custom-form-field option {
-    background: var(--highlight-lgrey);
-    color: black;
+	background: var(--highlight-lgrey);
+	color: black;
 }
 
 select {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .chakra-box,
 .chakra-input__group,
 .chakra-select__wrapper {
-    width: var(--form-field-width);
-    max-width: calc(100vw - 48px);
+	width: var(--form-field-width);
+	max-width: calc(100vw - 48px);
 }
 
 .custom-form-field:-webkit-autofill,
 .custom-form-field:-webkit-autofill:hover,
 .custom-form-field:-webkit-autofill:focus {
-  -webkit-text-fill-color: white;
-  -webkit-box-shadow: 0 0 0px 40rem var(--primary-green) inset !important;
+	-webkit-text-fill-color: white;
+	-webkit-box-shadow: 0 0 0px 40rem var(--primary-green) inset !important;
 }
 
-/* .datepicker, */
-Select.custom-form-field,
-Input.custom-form-field,
-.custom-form-field {
-    background-color: var(--highlight-lgrey);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    color: black;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-  }
-
-/* .datepicker.touched.no-error,
-Select.custom-form-field.touched.no-error,
-Input.custom-form-field.touched.no-error */
-.custom-form-field.touched.no-error {
-    background-color: var(--primary-green);
-    color: white;
-    -webkit-text-fill-color: white;
+/* Styles specific for datepicker */
+.datepicker {
+	background-color: var(--highlight-lgrey);
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	color: black;
+	transition: all 0.3s ease-in-out;
+	cursor: pointer;
 }
 
-.custom-form-field {
-    --icon-color: black;
-}
-.custom-form-field.touched.no-error {
-    --icon-color: white;
-}
-.custom-form-field svg {
-    color: var(--icon-color) !important;
+.datepicker.touched.no-error {
+	background-color: var(--primary-green);
+	color: white;
 }
 
-
-
-
-
-
-/* .datepicker.error,
-Select.custom-form-field.error,
-Input.custom-form-field.error */
-.custom-form-field.error {
-    animation: shake 0.5s ease-in-out;
+.datepicker:hover {
+	background-color: rgba(237, 239, 238, 0.5) !important;
 }
 
-/* .datepicker:hover,
-Select.custom-form-field:hover,
-Input.custom-form-field:hover, */
-.custom-form-field.not-touched.no-error:hover {
-    background-color: rgba(237, 239, 238, 0.5) !important;
-}
-
-/* .datepicker.touched.no-error:hover,
-Select.custom-form-field.touched.no-error:hover,
-Input.custom-form-field.touched.no-error:hover, */
-.custom-form-field.touched.no-error:hover {
-    background-color: #3a4a45;
+.datepicker.touched.no-error:hover {
+	background-color: #3a4a45;
 }
 
 /* Button style overwrite for datepicker */
 .react-datepicker__navigation--previous,
 .react-datepicker__navigation--next {
-  background: none;
-  border: none;
-  box-shadow: none;
-  height: auto;
-  width: auto;
+	background: none;
+	border: none;
+	box-shadow: none;
+	height: auto;
+	width: auto;
 }
 
 .react-datepicker__day--selected {
-    background-color: var(--primary-green) !important;
-    color: white !important;
-  }
+	background-color: var(--primary-green) !important;
+	color: white !important;
+}
 
 @media screen and (max-width: 880px) {
+	.chakra-simple-grid {
+		justify-items: center;
+	}
 
-    .chakra-simple-grid {
-        justify-items: center;
-    }
+	.booking-header {
+		flex-direction: column;
+		justify-content: center;
+	}
 
-    .booking-header {
-        flex-direction: column;
-        justify-content: center;
-    }
+	.booking-title {
+		margin: 0.4em 0 0 0;
+		align-self: flex-start;
+	}
 
-    .booking-title {
-        margin: 0.4em 0 0 0;
-        align-self: flex-start;
-    }
+	.booking-page img {
+		width: 60%;
+		height: 60%;
+		object-fit: cover;
+		object-position: center;
+		align-self: flex-end;
+		margin-top: 24px;
+	}
 
-    .booking-page img {
-        width: 60%;
-        height: 60%;
-        object-fit: cover;
-        object-position: center;
-        align-self: flex-end;
-        margin-top: 24px;
-    }
-
-    .confirmed.booking-page img {
-        margin-top: 0;
-    }
+	.confirmed.booking-page img {
+		margin-top: 0;
+	}
 }
 
 @media screen and (max-width: 760px) {
+	.booking-title {
+		justify-content: center;
+	}
 
-    .booking-title {
-        justify-content: center;
-    }
-
-    .confirmed.booking-page img {
-        width: 40vw;
-        height: 50vw;
-    }
+	.confirmed.booking-page img {
+		width: 40vw;
+		height: 50vw;
+	}
 }
 
 @media screen and (max-width: 470px) {
-
-    .booking-page h2 {
-        font-size: calc(var(--h2-size) * 0.7);
-    }
+	.booking-page h2 {
+		font-size: calc(var(--h2-size) * 0.7);
+	}
 }
 
 @media screen and (max-width: 430px) {
+	.booking-page h2 {
+		font-size: calc(var(--h2-size) * 0.6);
+	}
 
-    .booking-page h2 {
-        font-size: calc(var(--h2-size) * 0.6);
-    }
+	.confirmed.booking-page div {
+		flex-direction: column;
+	}
 
-    .confirmed.booking-page div {
-        flex-direction: column;
-    }
-
-    .confirmed.booking-title {
-        margin: 1em 0 0.25em 0;
-    }
-
+	.confirmed.booking-title {
+		margin: 1em 0 0.25em 0;
+	}
 }
 
 @media screen and (max-width: 400px) {
-
-    .confirmed h1 {
-        font-size: calc(var(--h1-size) * 0.6);
-    }
+	.confirmed h1 {
+		font-size: calc(var(--h1-size) * 0.6);
+	}
 }
 
-/* @media screen and (max-width: 388px) {
-    select,
-    input,
-    input[type="date"]::-webkit-calendar-picker-indicator,
-    .chakra-box,
-    .chakra-input__group,
-    .chakra-select__wrapper,
-    .reserve-table-button {
-        width: calc(100vw - 48px);
-    }
-} */
-
 @media screen and (max-width: 300px) {
+	.confirmed h1 {
+		font-size: calc(var(--h1-size) * 0.5);
+	}
 
-    .confirmed h1 {
-        font-size: calc(var(--h1-size) * 0.5);
-    }
-
-    .confirmed h2 {
-        font-size: calc(var(--h2-size) * 0.5);
-    }
-
+	.confirmed h2 {
+		font-size: calc(var(--h2-size) * 0.5);
+	}
 }

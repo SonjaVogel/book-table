@@ -1,83 +1,91 @@
 .hero {
-    height: 300px;
-    padding: 50px 0;
-    background-color: var(--primary-green);
+	height: 300px;
+	padding: 50px 0;
+	background-color: var(--primary-green);
 }
 
 .hero-item:first-child {
-    grid-column: 2/3;
-    margin-top: -5px;
+	grid-column: 2/3;
+	margin-top: -5px;
 }
 
 .hero-item:nth-child(2) {
-    grid-column: 3/4;
-    justify-self: flex-end;
+	grid-column: 3/4;
+	justify-self: flex-end;
 }
 
 .hero-item img {
-    width: 393px;
-    height: 395px;
-    object-fit: cover;
-    object-position: center;
-  }
+	width: 393px;
+	height: 395px;
+	object-fit: cover;
+	object-position: center;
+}
 
-  .hero h2 {
-    color: white;
-  }
+.hero h2 {
+	color: white;
+}
 
-  .hero p {
-    color: white;
-    margin: 1.75rem 0 1.75rem 0;
-    max-width: 420px;
-  }
+.hero p {
+	color: white;
+	margin: 1.75rem 0 1.75rem 0;
+	max-width: 420px;
+}
 
-  @media screen and (max-width: 835px) {
+@media screen and (max-width: 835px) {
+	.hero {
+		display: block;
+		height: 470px;
+		width: auto;
+		padding: 24px 24px 12px 24px;
+		margin-bottom: 35px;
+		background-image: url("../../public/heroimage.jpg");
+		background-size: cover;
+		background-position: center center;
+		object-fit: cover;
+	}
 
-    .hero {
-        display: block;
-        height: 470px;
-        width: auto;
-        padding: 24px 24px 12px 24px;
-        margin-bottom: 35px;
-        background-image: url('../../public/heroimage.jpg');
-        background-size: cover;
-        background-position: center center;
-        object-fit: cover;
-    }
+	.hero img {
+		display: none;
+	}
 
-    .hero img {
-        display: none;
-    }
+	.hero p {
+		padding-top: var(--top-padding-hero-text);
+		width: calc(100vw - 48px);
+		margin-bottom: 20px;
+	}
 
-    .hero p {
-        padding-top: var(--top-padding-hero-text);
-        width: calc(100vw - 48px);
-        margin-bottom: 20px;
-    }
+	.hero p,
+	.hero button {
+		align: left;
+	}
 
-    .hero p, .hero button {
-        align: left;
-    }
-
-    .hero h1, .hero h2 {
-        text-align: right;
-    }
-  }
+	.hero h1,
+	.hero h2 {
+		text-align: right;
+	}
+}
 
 @media screen and (max-width: 765px) {
-    .hero p {
-        padding-top: calc(var(--top-padding-hero-text) + (var(--h1-size) + var(--h2-size)) * 0.2);
-    }
+	.hero p {
+		padding-top: calc(
+			var(--top-padding-hero-text) + (var(--h1-size) + var(--h2-size)) * 0.2
+		);
+	}
 }
 
 @media screen and (max-width: 400px) {
-    .hero p {
-        padding-top: calc(var(--top-padding-hero-text) + (var(--h1-size) + var(--h2-size)) * 0.4);
-    }
+	.hero p {
+		padding-top: calc(
+			var(--top-padding-hero-text) + (var(--h1-size) + var(--h2-size)) * 0.4
+		);
+	}
 }
 
 @media screen and (max-width: 324px) {
-    .hero p {
-        padding-top: calc(var(--top-padding-hero-text) + (var(--h1-size) + var(--h2-size)) * 0.4 - 20px);
-    }
+	.hero p {
+		padding-top: calc(
+			var(--top-padding-hero-text) + (var(--h1-size) + var(--h2-size)) * 0.4 -
+				20px
+		);
+	}
 }

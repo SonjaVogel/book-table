@@ -118,7 +118,9 @@ p {
   margin: 6px 0 -12px 16px;
 }
 
-button {
+button,
+.button-style {
+  display: inline-block;
   background: var(--primary-yellow);
   height: 60px;
   width: 200px;
@@ -129,12 +131,15 @@ button {
   font-style: normal;
   font-weight: 500;
   font-size: var(--CTA-size);
+  text-align: center;
+  line-height: 60px;
   color: black;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
 }
 
-button:hover {
+button:hover,
+.button-style:hover {
   background: var(--primary-green);
   border: 1px solid white;
   color: white;

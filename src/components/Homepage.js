@@ -1,21 +1,20 @@
-import Hero from './Hero';
-import Specials from './Specials';
-import Reviews from './Reviews';
-import About from './About';
-import { useScrollToTop } from '../hooks/useScrollToTop';
+import About from "./About";
+import Hero from "./Hero";
+import Reviews from "./Reviews";
+import Specials from "./Specials";
+import { useScrollToTop } from "../hooks/useScrollToTop";
 
 function Homepage() {
+	useScrollToTop();
 
-    useScrollToTop();
-
-    return(
-        <>
-            <Hero />
-            <Specials />
-            <Reviews />
-            <About />
-        </>
-    )
+	return (
+		<>
+			<Hero />
+			<Specials />
+			<Reviews />
+			<About />
+		</>
+	);
 }
 
 export default Homepage;

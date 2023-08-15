@@ -1,16 +1,16 @@
-import { useEffect } from 'react';
-import { createBrowserHistory } from 'history';
+import { useEffect } from "react";
+import { createBrowserHistory } from "history";
 
 const history = createBrowserHistory();
 
-export const useBackListener = (callback) => {
-  useEffect(() => {
-    const unlisten = history.listen(({ action }) => {
-      if (action === 'POP') {
-        callback();
-      }
-    });
+export const useBackListener = callback => {
+	useEffect(() => {
+		const unlisten = history.listen(({ action }) => {
+			if (action === "POP") {
+				callback();
+			}
+		});
 
-    return unlisten;
-  }, [callback]);
+		return unlisten;
+	}, [callback]);
 };
