@@ -11,6 +11,7 @@ import {
 	useMediaQuery,
 } from "@chakra-ui/react";
 import { Field, Form, Formik, useFormikContext } from "formik";
+import PropTypes from "prop-types";
 import * as Yup from "yup";
 import { submitForm, updateTimes } from "../utils/formUtils";
 import "@fortawesome/fontawesome-free/css/all.css";
@@ -67,6 +68,11 @@ const CustomIcon = ({ name, icon, ...props }) => {
 	);
 };
 
+CustomIcon.propTypes = {
+	name: PropTypes.string.isRequired,
+	icon: PropTypes.string.isRequired,
+};
+
 const shake = keyframes`
     0% { transform: translateX(0); }
     25% { transform: translateX(-10px); }
@@ -107,6 +113,10 @@ const CustomSelect = ({ name, ...props }) => {
 	);
 };
 
+CustomSelect.propTypes = {
+	name: PropTypes.string.isRequired,
+};
+
 const CustomInput = ({ name, ...props }) => {
 	const { touched, errors } = useFormikContext();
 	return (
@@ -117,6 +127,10 @@ const CustomInput = ({ name, ...props }) => {
 			}}
 		/>
 	);
+};
+
+CustomInput.propTypes = {
+	name: PropTypes.string.isRequired,
 };
 
 const CustomBox = ({ icon, name, type, placeholder, options, onChange }) => {
@@ -181,6 +195,20 @@ const CustomBox = ({ icon, name, type, placeholder, options, onChange }) => {
 			)}
 		</Box>
 	);
+};
+
+CustomBox.propTypes = {
+	icon: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	type: PropTypes.string.isRequired,
+	placeholder: PropTypes.string,
+	options: PropTypes.arrayOf(
+		PropTypes.shape({
+			value: PropTypes.string.isRequired,
+			label: PropTypes.string.isRequired,
+		}),
+	),
+	onChange: PropTypes.func,
 };
 
 export default function BookingForm(props) {
@@ -250,7 +278,7 @@ export default function BookingForm(props) {
 									/>
 								</InputLeftElement>
 								<Field name="date">
-									{({ field, form }) => (
+									{({ form }) => (
 										<DatePicker
 											className={`datepicker ${
 												touched.date ? "touched" : ""
@@ -355,3 +383,7 @@ export default function BookingForm(props) {
 		</Formik>
 	);
 }
+
+BookingForm.propTypes = {
+	navigate: PropTypes.func.isRequired,
+};

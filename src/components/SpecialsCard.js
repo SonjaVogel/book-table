@@ -2,6 +2,7 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBicycle } from "@fortawesome/free-solid-svg-icons";
+import PropTypes from "prop-types";
 
 function SpecialsCard(props) {
 	return (
@@ -72,5 +73,13 @@ function SpecialsCard(props) {
 		</Card>
 	);
 }
+
+SpecialsCard.propTypes = {
+	img: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	price: PropTypes.string.isRequired,
+	text: PropTypes.string.isRequired,
+	link: PropTypes.string.isRequired,
+};
 
 export default SpecialsCard;
