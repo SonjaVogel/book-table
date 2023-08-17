@@ -1,5 +1,6 @@
 import Card from "react-bootstrap/Card";
 import Rating from "react-rating";
+import PropTypes from "prop-types";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -40,6 +41,7 @@ function ReviewsCard(props) {
 				<div style={{ display: "flex", alignItems: "center" }}>
 					<Card.Img
 						src={props.img}
+						alt={`${props.name} profile picture`}
 						style={{
 							borderRadius: "50%",
 							height: "33px",
@@ -70,5 +72,12 @@ function ReviewsCard(props) {
 		</Card>
 	);
 }
+
+ReviewsCard.propTypes = {
+	rating: PropTypes.number.isRequired,
+	img: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	text: PropTypes.string.isRequired,
+};
 
 export default ReviewsCard;

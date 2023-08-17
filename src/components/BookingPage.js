@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
+import PropTypes from "prop-types";
 import BookingForm from "./BookingForm";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 import "../styles/BookingPage.css";
@@ -34,5 +35,12 @@ function BookingPage(props) {
 		</section>
 	);
 }
+
+BookingPage.propTypes = {
+	availableTimes: PropTypes.array.isRequired,
+	dispatch: PropTypes.func.isRequired,
+	date: PropTypes.instanceOf(Date).isRequired,
+	setDate: PropTypes.func.isRequired,
+};
 
 export default BookingPage;

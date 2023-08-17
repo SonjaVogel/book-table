@@ -12,7 +12,8 @@ function PageOutOfScope() {
 				<div>
 					<h2>
 						Please visit the <a href="/">homepage</a> or{" "}
-						<a href="/reserve-table">reserve a table page</a> instead.
+						<a href="/reserve-table">reserve a table page</a>{" "}
+						instead.
 					</h2>
 					<img
 						className="confirmed"

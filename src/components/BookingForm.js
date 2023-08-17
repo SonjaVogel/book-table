@@ -68,10 +68,10 @@ const CustomIcon = ({ name, icon, ...props }) => {
 	);
 };
 
-// CustomIcon.propTypes = {
-// 	name: PropTypes.string.isRequired,
-// 	icon: PropTypes.string.isRequired,
-// };
+CustomIcon.propTypes = {
+	name: PropTypes.string.isRequired,
+	icon: PropTypes.string.isRequired,
+};
 
 const shake = keyframes`
     0% { transform: translateX(0); }
@@ -113,9 +113,9 @@ const CustomSelect = ({ name, ...props }) => {
 	);
 };
 
-// CustomSelect.propTypes = {
-// 	name: PropTypes.string.isRequired,
-// };
+CustomSelect.propTypes = {
+	name: PropTypes.string.isRequired,
+};
 
 const CustomInput = ({ name, ...props }) => {
 	const { touched, errors } = useFormikContext();
@@ -129,9 +129,9 @@ const CustomInput = ({ name, ...props }) => {
 	);
 };
 
-// CustomInput.propTypes = {
-// 	name: PropTypes.string.isRequired,
-// };
+CustomInput.propTypes = {
+	name: PropTypes.string.isRequired,
+};
 
 const CustomBox = ({ icon, name, type, placeholder, options, onChange }) => {
 	const { errors, touched } = useFormikContext();
@@ -386,6 +386,6 @@ export default function BookingForm(props) {
 	);
 }
 
-// BookingForm.propTypes = {
-// 	navigate: PropTypes.func.isRequired,
-// };
+BookingForm.propTypes = {
+	navigate: PropTypes.func.isRequired,
+};

@@ -1,9 +1,16 @@
+import PropTypes from "prop-types";
 import SpecialsCard from "./SpecialsCard";
 import ReviewsCard from "./ReviewsCard";
 
 function CardContainer(props) {
 	return (
-		<div style={{ display: "flex", flexDirection: "row", flexWrap: "nowrap" }}>
+		<div
+			style={{
+				display: "flex",
+				flexDirection: "row",
+				flexWrap: "nowrap",
+			}}
+		>
 			{props.cards.map(card => {
 				if (props.type === "specials") {
 					return (
@@ -33,5 +40,10 @@ function CardContainer(props) {
 		</div>
 	);
 }
+
+CardContainer.propTypes = {
+	cards: PropTypes.array.isRequired,
+	type: PropTypes.string.isRequired,
+};
 
 export default CardContainer;

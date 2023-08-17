@@ -1,8 +1,8 @@
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBicycle } from "@fortawesome/free-solid-svg-icons";
-import PropTypes from "prop-types";
 
 function SpecialsCard(props) {
 	return (
@@ -20,6 +20,7 @@ function SpecialsCard(props) {
 				<Card.Img
 					variant="top"
 					src={props.img}
+					alt={`${props.title} by Little Lemon restaurant`}
 					style={{
 						borderRadius: "16px 16px 0px 0px",
 						height: "185px",
